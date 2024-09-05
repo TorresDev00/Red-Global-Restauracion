@@ -1,5 +1,5 @@
 ---
-import Nav from '../components/Nav.astro';
+import Nav from "../components/Nav.astro";
 
 interface Props {
 	title: string;
@@ -17,8 +17,44 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<!-- Ocultar contenido mientras se carga el tema -->
+		<style>
+			html {
+				visibility: hidden;
+				opacity: 0;
+			}
+		</style>
+
+		<!-- Script para determinar el tema antes de mostrar el contenido -->
+		<script>
+			(function() {
+				if (
+					localStorage.theme === "light" ||
+					(!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: light)").matches)
+				) {
+					document.documentElement.classList.remove('dark');
+				}
+				// Mostrar el contenido una vez que el tema se haya aplicado
+				document.documentElement.style.visibility = "visible";
+				document.documentElement.style.opacity = "1";
+			})();
+		</script>
+
+		<!-- Soporte para usuarios sin JavaScript -->
+		<noscript>
+			<style>
+				html {
+					visibility: visible;
+					opacity: 1;
+				}
+			</style>
+		</noscript>
 	</head>
-	<body class="bg-white-100 dark:bg-gray-900">
-		<Nav/>
+	<body class="bg-white dark:bg-gray-900">
+		<Nav />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
