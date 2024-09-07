@@ -1,5 +1,6 @@
 ---
 import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro"
 
 interface Props {
 	title: string;
@@ -28,13 +29,18 @@ const { title } = Astro.props;
 
 		<!-- Script para determinar el tema antes de mostrar el contenido -->
 		<script>
-			(function() {
+			(function () {
 				if (
-					localStorage.theme === "light" ||
-					(!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: light)").matches)
+					localStorage.theme === "dark" ||
+					(!("theme" in localStorage) &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches)
 				) {
-					document.documentElement.classList.remove('dark');
+					document.documentElement.classList.add("dark");
+				} else {
+					document.documentElement.classList.remove("dark");
 				}
+
 				// Mostrar el contenido una vez que el tema se haya aplicado
 				document.documentElement.style.visibility = "visible";
 				document.documentElement.style.opacity = "1";
@@ -56,5 +62,6 @@ const { title } = Astro.props;
 		<main>
 			<slot />
 		</main>
+		<Footer />
 	</body>
 </html>
