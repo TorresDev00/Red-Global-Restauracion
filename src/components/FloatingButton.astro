@@ -1,0 +1,210 @@
+---
+// FloatingButton.astro
+export interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<button
+    id="floatingButton"
+    class="bg-black bg-opacity-70 text-white font-medium py-3 px-4 rounded-full flex items-center shadow-lg hover:bg-opacity-80 transition-all duration-300"
+>
+    <span class="text-base">{title}</span>
+    <div
+        class="icon-container bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0"
+    >
+        <svg
+            class="text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M12 4v16m8-8H4"></path>
+        </svg>
+    </div>
+</button>
+
+<style>
+    /* Estilos del botón animado */
+    #floatingButton {
+        position: sticky;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            transform 1.5s ease,
+            opacity 0.8s ease-in-out,
+            visibility 0s 1.5s;
+        backdrop-filter: blur(10px);
+        z-index: 999;
+        padding: 10px 15px;
+    }
+
+    /* Cuando el botón es visible */
+    #floatingButton.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(-32px);
+        transition:
+            transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 1s ease;
+    }
+
+    /* Contenido del botón */
+    #floatingButton span {
+        display: inline-block;
+        transition:
+            max-width 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 1.2s ease,
+            transform 1.2s ease;
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        transform: translateX(-20px);
+        font-size: 14px;
+    }
+
+    #floatingButton.expanded span {
+        max-width: 300px;
+        opacity: 1;
+        margin-right: 12px;
+        transform: translateX(0);
+        font-size: 16px;
+    }
+
+    /* Icono dentro del botón */
+    .icon-container {
+        transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        width: 2rem;
+        height: 2rem;
+        transform: rotate(135deg);
+    }
+
+    #floatingButton .icon-container svg {
+        width: 1rem;
+        height: 1rem;
+        transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    #floatingButton.expanded .icon-container {
+        transform: rotate(0);
+        background-color: #3b82f6;
+    }
+
+    #floatingButton:hover .icon-container {
+        background-color: #2563eb;
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    }
+
+    #floatingButton:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        transform: translateX(-50%) translateY(-36px) scale(1.05);
+    }
+
+    /* Mejora del margen y espaciado */
+    .content {
+        padding: 100px 0;
+    }
+
+    /* Media queries para hacer el diseño responsive */
+    @media screen and (max-width: 768px) {
+        #floatingButton {
+            padding: 8px 12px;
+            bottom: 10px;
+        }
+
+        #floatingButton span {
+            font-size: 12px;
+        }
+
+        .icon-container {
+            width: 1.75rem;
+            height: 1.75rem;
+        }
+
+        #floatingButton .icon-container svg {
+            width: 0.875rem;
+            height: 0.875rem;
+        }
+
+        #floatingButton.visible {
+            transform: translateX(-50%) translateY(-32px);
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        #floatingButton {
+            padding: 6px 10px;
+            bottom: 8px;
+        }
+
+        #floatingButton span {
+            font-size: 10px;
+        }
+
+        .icon-container {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        #floatingButton .icon-container svg {
+            width: 0.75rem;
+            height: 0.75rem;
+        }
+        #floatingButton.visible {
+            transform: translateX(-15%) translateY(-32px);
+        }
+    }
+</style>
+
+<script>
+    const button = document.getElementById("floatingButton");
+    let buttonVisible = false;
+    let lastScrollPosition = 0;
+    let ticking = false;
+    let timeoutId;
+
+    function updateButtonVisibility() {
+        const scrollPosition = window.scrollY;
+        const showThreshold = 2700; // Ajustar el umbral de visibilidad
+
+        if (scrollPosition > showThreshold && !buttonVisible) {
+            buttonVisible = true;
+            button.classList.add("visible");
+            setTimeout(() => {
+                button.classList.add("expanded");
+            }, 800);
+        } else if (scrollPosition <= showThreshold && buttonVisible) {
+            buttonVisible = false;
+            button.classList.remove("expanded");
+            setTimeout(() => {
+                button.classList.remove("visible");
+            }, 1000);
+        }
+
+        lastScrollPosition = scrollPosition;
+        ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                updateButtonVisibility();
+            }, 100);
+            ticking = true;
+        }
+    });
+
+    updateButtonVisibility();
+</script>

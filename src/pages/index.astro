@@ -1,11 +1,37 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import AnimatedSection from "../components/AnimatedSection.astro";
+import FloatingButton from "../components/FloatingButton.astro";
+import InteractiveSection from "../components/InteractiveSection.astro";
 ---
 
 <Layout title="Red Global Restauración">
-	<h1 class="text-black dark:text-white text-4xl font-bold text-center mt-8">
-		Red Global Restauración 🚀 
-	</h1>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</Layout>
+  <!-- Saltos de línea para espacio -->
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+  /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+  /><br /><br /><br /><br /><br />
 
+  <AnimatedSection
+    videoSrc="https://www.apple.com/105/media/us/ipad-pro/2024/97d7edf3-aac0-443d-9731-38d40ff50951/anim/m4-chip/large.mp4"
+    imageSrc="/letrar2.png"
+  />
+
+  <!-- Más espacio -->
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+  /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+  /><br />
+
+  <div class="flex justify-center">
+    <InteractiveSection imageUrl="/fotoPaisaje.jpg" />
+  </div>
+
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+  /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+  /><br /><br /><br /><br />  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+  /><br /><br /><br /><br />
+  <FloatingButton title="Click me"></FloatingButton>
+
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+  /><br /><br /><br /><br />  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+  /><br /><br /><br /><br />
+</Layout>
