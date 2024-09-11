@@ -9,8 +9,8 @@ const { videoSrc, imageSrc } = Astro.props;
 
 <section
     id="animated-section"
-    class="relative overflow-hidden"
-    style="height: 100vh; visibility: hidden;" 
+    class="relative overflow-hidden h-[100vh]"
+    style="visibility: hidden;" 
 >
     <video
         id="background-video"
@@ -105,14 +105,13 @@ const { videoSrc, imageSrc } = Astro.props;
     // Animaciones con ScrollTrigger
     gsap.fromTo(
         "#image1",
-        { scale: 10, opacity: 0 }, // La imagen comienza con gran zoom y es transparente
+        { scale: 25 }, // La imagen comienza con gran zoom y es transparente
         {
             scale: 1, // La imagen vuelve a su tamaño normal
-            opacity: 1, // Se vuelve completamente visible
             scrollTrigger: {
                 trigger: "#animated-section",
                 start: "center center",
-                end: "+=250vh", // Define el desplazamiento adicional necesario para la animación
+                end: "+=750vh", // Define el desplazamiento adicional necesario para la animación
                 scrub: 1,
                 pin: true,
                 pinSpacing: true, // Permite que ScrollTrigger maneje el espacio

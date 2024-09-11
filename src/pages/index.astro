@@ -1,37 +1,133 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AnimatedSection from "../components/AnimatedSection.astro";
-import FloatingButton from "../components/FloatingButton.astro";
-import InteractiveSection from "../components/InteractiveSection.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="Red Global Restauración">
-  <!-- Saltos de línea para espacio -->
-  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-  /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-  /><br /><br /><br /><br /><br />
+	<section
+		class="container mx-auto mt-8 sm:mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 lg:px-8 mb-8"
+	>
+		<div class="max-w-5xl mx-auto 2xl:mx-16">
+			<h1
+				class="font-poppins text-dark dark:text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight mb-4 sm:mb-6"
+			>
+				<span class="block">RED GLOBAL</span>
+				<span
+					class="block text-blue-800 dark:text-orange-300 mt-1 sm:mt-2"
+					>RESTAURACIÓN</span
+				>
+			</h1>
+			<p
+				class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-700 dark:text-gray-300 font-light max-w-3xl"
+			>
+				Iglesia Metodista de Venezuela
+			</p>
+		</div>
+	</section>
+	<section
+		class="flex flex-col md:flex-row items-center justify-center mt-14 sm:mt-16 md:mt-20 lg:mt-32 px-4 sm:px-6 lg:px-8"
+	>
+		<article class="max-w-md md:max-w-2xl lg:max-w-5xl mx-auto">
+			<h2
+				class="font-poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center text-dark dark:text-white mb-8"
+			>
+				Quienes somos
+			</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				<figure class="order-2 md:order-1">
+					<Image
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRsvdRzKoEjwgVvs63b0io78eFsTeN1qZ-zg&s"
+						alt="Obispo Carlos y Dra. Maria de Pirona"
+						width={600}
+						height={400}
+						class="rounded-lg shadow-lg w-full max-w-[600px] h-auto object-cover"
+						loading="eager"
+					/>
+				</figure>
+				<div class="order-1 md:order-2">
+					<p
+						class="text-lg text-justify leading-relaxed text-dark dark:text-white"
+					>
+						La familia Pirona lleva más de 30 años trabajando en pos
+						de la restauración familiar, formación de ministros y
+						plantación de iglesias a nivel global. Así como también
+						la dirección de seminarios bíblicos y la fundación de
+						centros de asistencia médicos y sociales a nivel
+						nacional.
+					</p>
+					<p
+						class="text-lg text-justify leading-relaxed text-dark dark:text-white mt-4"
+					>
+						Sirven en Venezuela así como en las naciones junto a su
+						familia con la visión de "familias restauradas y
+						apasionadas alcanzando las naciones para Cristo."
+					</p>
+					<p
+						class="text-lg text-center leading-relaxed text-dark dark:text-white mt-10 lg:px-6"
+					>
+						<strong class="block font-bold">
+							Obispo Carlos y Dra. Maria de Pirona
+						</strong>
+						<span class="block">
+							Directores de la Red Global Restauración Iglesia
+							Metodista de Venezuela
+						</span>
+					</p>
+				</div>
+			</div>
+		</article>
+	</section>
 
-  <AnimatedSection
-    videoSrc="https://www.apple.com/105/media/us/ipad-pro/2024/97d7edf3-aac0-443d-9731-38d40ff50951/anim/m4-chip/large.mp4"
-    imageSrc="/letrar2.png"
-  />
+	<section class="py-28">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-12">Nuestros Fundamentos</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<!-- Fundamento 1 -->
+				<div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center hover:shadow-xl transition-shadow duration-300">
+					<div class="text-6xl font-bold text-primary-500 mb-4">01.</div>
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">ADORO</h3>
+					<p class="text-md text-gray-600 dark:text-gray-300 mt-2">Ser un adorador íntimo para hacer una adoración transformadora.</p>
+				</div>
+				<!-- Fundamento 2 -->
+				<div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center hover:shadow-xl transition-shadow duration-300">
+					<div class="text-6xl font-bold text-primary-500 mb-4">02.</div>
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">SIRVO</h3>
+					<p class="text-md text-gray-600 dark:text-gray-300 mt-2">Ser un servidor influyente para hacer una iglesia de excelencia.</p>
+				</div>
+				<!-- Fundamento 3 -->
+				<div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center hover:shadow-xl transition-shadow duration-300">
+					<div class="text-6xl font-bold text-primary-500 mb-4">03.</div>
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">EVANGELIZO</h3>
+					<p class="text-md text-gray-600 dark:text-gray-300 mt-2">Ser un evangelizador apasionado para hacer discípulos del reino.</p>
+				</div>
+				<!-- Fundamento 4 -->
+				<div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center hover:shadow-xl transition-shadow duration-300">
+					<div class="text-6xl font-bold text-primary-500 mb-4">04.</div>
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">CONECTO</h3>
+					<p class="text-md text-gray-600 dark:text-gray-300 mt-2">Ser un amigo genuino para hacer amigos saludables.</p>
+				</div>
+				<!-- Fundamento 5 -->
+				<div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center hover:shadow-xl transition-shadow duration-300">
+					<div class="text-6xl font-bold text-primary-500 mb-4">05.</div>
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">DISCIPULO</h3>
+					<p class="text-md text-gray-600 dark:text-gray-300 mt-2">Ser un discípulo íntegro para hacer discípulos de carácter.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
 
-  <!-- Más espacio -->
-  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-  /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-  /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+	/><br /><br /><br /><br />
 
-  <div class="flex justify-center">
-    <InteractiveSection imageUrl="/fotoPaisaje.jpg" />
-  </div>
+	<AnimatedSection
+		videoSrc="https://www.apple.com/105/media/us/ipad-pro/2024/97d7edf3-aac0-443d-9731-38d40ff50951/anim/m4-chip/large.mp4"
+		imageSrc="/LogoAnimate.svg"
+	/>
 
-  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-  /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-  /><br /><br /><br /><br />  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-  /><br /><br /><br /><br />
-  <FloatingButton title="Click me"></FloatingButton>
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+	/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+	/><br /><br />
 
-  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-  /><br /><br /><br /><br />  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-  /><br /><br /><br /><br />
 </Layout>
