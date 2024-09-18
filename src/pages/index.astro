@@ -1,14 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AnimatedSection from "../components/AnimatedSection.astro";
+import BoxInfo from "../components/BoxInfo.astro";
+import CounterCard from "../components/CounterCard.astro";
+import CarruselInfinito from "../components/CarruselInfinito.astro";
 import { Image } from "astro:assets";
 ---
 
 <Layout title="Red Global Restauración">
 	<section
-		class="container mx-auto mt-8 sm:mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 lg:px-8 mb-8"
+		class="container min-h-[110vh] mx-auto -mt-32 sm:pb-6 lg:pb-8 bg-[url('https://images.vexels.com/media/users/3/148174/isolated/svg/36028f4f9f896e3f7f1a221c565dc8a3.svg')] bg-cover bg-center bg-no-repeat relative flex items-center justify-start -z-10 bg-opacity-35"
 	>
-		<div class="max-w-5xl mx-auto 2xl:mx-16">
+		<div
+			class="max-w-5xl max-sm:mb-20 lg:pt-11 mx-auto lg:mx-16 2xl:mx-16 text-start"
+		>
 			<h1
 				class="font-poppins text-dark dark:text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight mb-4 sm:mb-6"
 			>
@@ -25,12 +30,13 @@ import { Image } from "astro:assets";
 			</p>
 		</div>
 	</section>
+
 	<section
 		class="flex flex-col md:flex-row items-center justify-center mt-14 sm:mt-16 md:mt-20 lg:mt-32 px-4 sm:px-6 lg:px-8"
 	>
 		<article class="max-w-md md:max-w-2xl lg:max-w-5xl mx-auto">
 			<h2
-				class="font-poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center text-dark dark:text-white mb-8"
+				class="font-extrabold text-3xl md:text-4xl lg:text-5xl text-center text-dark dark:text-white mb-8"
 			>
 				Quienes somos
 			</h2>
@@ -79,55 +85,339 @@ import { Image } from "astro:assets";
 		</article>
 	</section>
 
-	<section class="py-28">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-12">Nuestros Fundamentos</h2>
+	<section class="py-28 bg-white dark:bg-gray-900">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h2
+				class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-black dark:text-white mb-12"
+			>
+				Nuestros Fundamentos
+			</h2>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				<!-- Fundamento 1 -->
-				<div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center hover:shadow-xl transition-shadow duration-300">
-					<div class="text-6xl font-bold text-primary-500 mb-4">01.</div>
-					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">ADORO</h3>
-					<p class="text-md text-gray-600 dark:text-gray-300 mt-2">Ser un adorador íntimo para hacer una adoración transformadora.</p>
-				</div>
+				<BoxInfo
+					title="ADORO"
+					info="Ser un adorador íntimo para hacer una adoración transformadora."
+					url="/Iconos/adoro.svg"
+					alt="Icono de Adoracion"
+					coverUrl="/fotoPaisaje.jpg"
+				/>
 				<!-- Fundamento 2 -->
-				<div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center hover:shadow-xl transition-shadow duration-300">
-					<div class="text-6xl font-bold text-primary-500 mb-4">02.</div>
-					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">SIRVO</h3>
-					<p class="text-md text-gray-600 dark:text-gray-300 mt-2">Ser un servidor influyente para hacer una iglesia de excelencia.</p>
-				</div>
+				<BoxInfo
+					title="SIRVO"
+					info="Ser un servidor influyente para hacer una iglesia de excelencia."
+					url="/Iconos/sirvo.svg"
+					alt="Icono de Servicio"
+					coverUrl="/fotoPaisaje.jpg"
+				/>
 				<!-- Fundamento 3 -->
-				<div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center hover:shadow-xl transition-shadow duration-300">
-					<div class="text-6xl font-bold text-primary-500 mb-4">03.</div>
-					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">EVANGELIZO</h3>
-					<p class="text-md text-gray-600 dark:text-gray-300 mt-2">Ser un evangelizador apasionado para hacer discípulos del reino.</p>
-				</div>
+				<BoxInfo
+					title="EVANGELIZO"
+					info="Ser un evangelizador apasionado para hacer discípulos del reino."
+					url="/Iconos/evangelizo.svg"
+					alt="Icono de Evangelizacion"
+					optionalClassImage="py-2"
+					coverUrl="/fotoPaisaje.jpg"
+				/>
 				<!-- Fundamento 4 -->
-				<div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center hover:shadow-xl transition-shadow duration-300">
-					<div class="text-6xl font-bold text-primary-500 mb-4">04.</div>
-					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">CONECTO</h3>
-					<p class="text-md text-gray-600 dark:text-gray-300 mt-2">Ser un amigo genuino para hacer amigos saludables.</p>
-				</div>
+				<BoxInfo
+					title="CONECTO"
+					info="Ser un amigo genuino para hacer amigos saludables."
+					url="/Iconos/conecto.svg"
+					alt="Icono de Conectando"
+					optionalClassImage="pb-2 pt-3"
+					coverUrl="/fotoPaisaje.jpg"
+				/>
 				<!-- Fundamento 5 -->
-				<div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center hover:shadow-xl transition-shadow duration-300">
-					<div class="text-6xl font-bold text-primary-500 mb-4">05.</div>
-					<h3 class="text-xl font-semibold text-gray-900 dark:text-white">DISCIPULO</h3>
-					<p class="text-md text-gray-600 dark:text-gray-300 mt-2">Ser un discípulo íntegro para hacer discípulos de carácter.</p>
-				</div>
+				<BoxInfo
+					title="DISCIPULO"
+					info="Ser un discípulo íntegro para hacer discípulos de carácter."
+					url="/Iconos/discipulo.svg"
+					alt="Icono de Discipulos"
+					coverUrl="/fotoPaisaje.jpg"
+				/>
 			</div>
 		</div>
 	</section>
-	
 
-	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-	/><br /><br /><br /><br />
+	<section class="py-16">
+		<div class="container mx-auto px-4">
+			<h3
+				class="my-4 pb-7 text-start max-sm:text-center text-3xl md:text-4xl lg:text-5xl font-extrabold text-black dark:text-white"
+			>
+				Metas Alcanzadas
+			</h3>
+			<div class="flex flex-wrap justify-center -mx-4">
+				<!-- Contador de Personas Alimentadas -->
+				<CounterCard dataCount="654000" title="Personas Alimentadas">
+					<svg
+						class="w-12 h-12 mr-2"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<defs>
+							<linearGradient
+								id="gradient1"
+								x1="0%"
+								y1="0%"
+								x2="100%"
+								y2="0%"
+							>
+								<stop offset="0%" stop-color="#3b82f6"></stop>
+								<stop offset="50%" stop-color="#8b5cf6"></stop>
+								<stop offset="100%" stop-color="#ec4899"></stop>
+							</linearGradient>
+						</defs>
+						<path
+							stroke="url(#gradient1)"
+							fill="none"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+						></path>
+					</svg>
+				</CounterCard>
 
-	<AnimatedSection
-		videoSrc="https://www.apple.com/105/media/us/ipad-pro/2024/97d7edf3-aac0-443d-9731-38d40ff50951/anim/m4-chip/large.mp4"
-		imageSrc="/LogoAnimate.svg"
-	/>
+				<CounterCard dataCount="10000" title="Líderes Capacitados">
+					<svg
+						class="w-12 h-12 mr-2"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<defs>
+							<linearGradient
+								id="gradient2"
+								x1="0%"
+								y1="0%"
+								x2="100%"
+								y2="0%"
+							>
+								<stop offset="0%" stop-color="#3b82f6"></stop>
+								<stop offset="50%" stop-color="#8b5cf6"></stop>
+								<stop offset="100%" stop-color="#ec4899"></stop>
+							</linearGradient>
+						</defs>
+						<path
+							stroke="url(#gradient2)"
+							fill="none"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+						></path>
+					</svg>
+				</CounterCard>
 
-	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-	/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-	/><br /><br />
+				<CounterCard dataCount="50000" title="Miembros Globalmente">
+					<svg
+						class="w-12 h-12 mr-2"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<defs>
+							<linearGradient
+								id="gradient3"
+								x1="0%"
+								y1="0%"
+								x2="100%"
+								y2="0%"
+							>
+								<stop offset="0%" stop-color="#3b82f6"></stop>
+								<stop offset="50%" stop-color="#8b5cf6"></stop>
+								<stop offset="100%" stop-color="#ec4899"></stop>
+							</linearGradient>
+						</defs>
+						<path
+							stroke="url(#gradient3)"
+							fill="none"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+						></path>
+					</svg>
+				</CounterCard>
 
+				<CounterCard dataCount="30" title="Años de Trayectoria">
+					<svg
+						class="w-12 h-12 mr-2"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<defs>
+							<linearGradient
+								id="gradient4"
+								x1="0%"
+								y1="0%"
+								x2="100%"
+								y2="0%"
+							>
+								<stop offset="0%" stop-color="#3b82f6"></stop>
+								<stop offset="50%" stop-color="#8b5cf6"></stop>
+								<stop offset="100%" stop-color="#ec4899"></stop>
+							</linearGradient>
+						</defs>
+						<path
+							stroke="url(#gradient4)"
+							fill="none"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+						></path>
+					</svg>
+				</CounterCard>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-7">
+		<AnimatedSection
+			videoSrc="https://www.apple.com/105/media/us/ipad-pro/2024/97d7edf3-aac0-443d-9731-38d40ff50951/anim/m4-chip/large.mp4"
+			imageSrc="/LogoAnimate.svg"
+		/>
+	</section>
+
+	<section class="flex flex-col items-center py-20 px-4">
+		<h3
+			class="font-extrabold text-3xl md:text-4xl lg:text-5xl text-gray-900 dark:text-white mb-6"
+		>
+			Nuestros Aliados
+		</h3>
+		<div class="w-full max-w-4xl">
+			<CarruselInfinito />
+		</div>
+	</section>
+
+	<section class="py-11">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<h2
+				class="text-center sm:text-3xl lg:text-5xl font-extrabold pb-10 text-black dark:text-white"
+			>
+				Información de contacto
+			</h2>
+			<div
+				class="flex flex-col lg:flex-row items-center justify-center gap-10"
+			>
+				<address class="w-full lg:w-1/2 not-italic">
+					<div
+						class="relative flex justify-center items-center h-[600px] w-full max-w-[330px] border-8 border-black dark:border-gray-700 rounded-3xl mx-auto z-50 shadow-xl bg-gradient-to-b from-gray-800 to-black dark:from-gray-700 dark:to-gray-900 overflow-hidden"
+					>
+						<div
+							class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"
+						>
+						</div>
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2162.913883407896!2d-69.39231334646111!3d10.033670235976096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e87636b367fdb05%3A0xd2bc27453304a517!2sMinisterio%20Restauracion%20Internacional!5e0!3m2!1ses!2sve!4v1726187022646!5m2!1ses!2sve"
+							class="absolute inset-0 w-full h-full rounded-2xl"
+							title="Ubicación de Red Global Restauración"
+							allowfullscreen=""
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+						></iframe>
+						<span
+							class="absolute -right-4 top-20 w-1 h-16 bg-gray-300 dark:bg-gray-600 rounded-l-md shadow-md"
+						></span>
+						<span
+							class="absolute -right-2 top-40 w-1 h-20 bg-gray-300 dark:bg-gray-600 rounded-l-md shadow-md"
+						></span>
+						<span
+							class="absolute -left-2 top-32 w-1 h-16 bg-gray-300 dark:bg-gray-600 rounded-r-md shadow-md"
+						></span>
+						<div
+							class="absolute -top-1 left-1/2 transform -translate-x-1/2 w-32 h-4 bg-black dark:bg-gray-700 rounded-br-xl rounded-bl-xl flex justify-center items-center"
+						>
+							<div
+								class="w-16 h-2 bg-gray-400 dark:bg-gray-500 rounded-full"
+							>
+							</div>
+						</div>
+						<div
+							class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-300 dark:bg-gray-600 rounded-full"
+						>
+						</div>
+					</div>
+				</address>
+
+				<ul
+					class="w-full lg:w-1/2 text-gray-700 dark:text-gray-300 space-y-10"
+				>
+					<li class="flex items-start gap-6 mt-5">
+						<svg
+							aria-hidden="true"
+							xmlns="http://www.w3.org/2000/svg"
+							class="w-8 h-8 text-gray-500 dark:text-gray-400"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path
+								d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+							></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+						<div>
+							<h3 class="text-2xl font-semibold mb-3">
+								Dirección
+							</h3>
+							<p class="text-lg leading-relaxed">
+								Av. Vicente Landaeta entre Av. Rotaria y el
+								Aeropuerto<br />
+								Barquisimeto, Lara, Venezuela
+							</p>
+						</div>
+					</li>
+
+					<li class="flex items-start gap-6">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="w-8 h-8 text-gray-500 dark:text-gray-400"
+							fill="currentColor"
+							class="bi bi-phone"
+							viewBox="0 0 16 16"
+						>
+							<path
+								d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
+							></path>
+							<path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"></path>
+						</svg>
+						<div>
+							<h3 class="text-2xl font-semibold mb-3">
+								Teléfonos
+							</h3>
+							<ul class="text-lg leading-relaxed">
+								<li>04125561673</li>
+								<li>04145236964</li>
+							</ul>
+						</div>
+					</li>
+
+					<li class="flex items-start gap-6">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="w-8 h-8 text-gray-500 dark:text-gray-400"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							><path
+								d="M20 4H6c-1.103 0-2 .897-2 2v5h2V8l6.4 4.8a1.001 1.001 0 0 0 1.2 0L20 8v9h-8v2h8c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-7 6.75L6.666 6h12.668L13 10.75z"
+							></path><path d="M2 12h7v2H2zm2 3h6v2H4zm3 3h4v2H7z"
+							></path></svg
+						>
+						<div>
+							<h3 class="text-2xl font-semibold mb-3">Correo</h3>
+							<a
+								href="mailto:contacto@redglobalrestauracion.org"
+								class="text-lg leading-relaxed hover:underline"
+							>
+								contacto@redglobalrestauracion.org
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
 </Layout>

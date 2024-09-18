@@ -1,0 +1,137 @@
+---
+interface Props {
+  title: string;
+  info: string;
+  url: string;
+  alt: string;
+  coverUrl: string; // URL de la imagen que cubrirá la información
+  optionalClassImage?: string;
+}
+
+const {
+  title,
+  info,
+  url,
+  alt,
+  coverUrl,
+  optionalClassImage = "",
+} = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<section
+  class="section-container relative bg-cover bg-center rounded-2xl shadow-lg h-96 w-full max-w-sm flex flex-col items-center justify-center transition-bg"
+  style={`background-image: url('${coverUrl}');`}
+  aria-live="polite"
+>
+  <!-- Botón de toggle para mostrar/ocultar -->
+  <button
+    class="toggle-button absolute bottom-4 right-4 p-3 border-2 border-black text-black hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-blue-950 rounded-full transition duration-300 z-50"
+    aria-label="Mostrar información adicional"
+  >
+    <svg
+      class="toggle-icon h-6 w-6 transition-transform duration-500"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 4v16m8-8H4"></path>
+    </svg>
+  </button>
+
+  <!-- Información oculta inicialmente -->
+  <div
+    class="info-divs absolute inset-0 backdrop-blur-sm w-full h-full flex flex-col gap-4 justify-center items-center opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out invisible"
+    aria-hidden="true"
+  >
+    <article
+      class="bg-transparent py-6 px-4 rounded-lg flex flex-col items-center"
+    >
+      <Image
+        src={url}
+        width={64}
+        height={64}
+        alt={alt}
+        class={`text-gray-900 dark:text-white ${optionalClassImage}`}
+      />
+      <h2
+        aria-label={title}
+        class="text-xl font-bold mb-2 text-dark dark:text-white"
+      >
+        {title}
+      </h2>
+      <p class="text-center text-dark dark:text-white">{info}</p>
+    </article>
+  </div>
+</section>
+
+<script>
+
+  const sections = document.querySelectorAll(".section-container");
+
+  sections.forEach((section) => {
+    const toggleButton = section.querySelector(".toggle-button");
+    const toggleIcon = section.querySelector(".toggle-icon");
+    const infoDivs = section.querySelector(".info-divs");
+    let isOpen = false;
+
+    // Verificar si backgroundImage está definido y tiene un valor
+    const backgroundImage = section.style.backgroundImage;
+    if (backgroundImage && backgroundImage.startsWith("url(")) {
+      section.dataset.imageUrl = backgroundImage.slice(5, -2); // Remover 'url(' y ')'
+    }
+
+    toggleButton.addEventListener("click", () => {
+      if (isOpen) {
+        infoDivs.classList.add("opacity-0", "translate-y-4");
+        infoDivs.setAttribute("aria-hidden", "true");
+        setTimeout(() => {
+          infoDivs.classList.add("invisible");
+          section.style.backgroundImage = `url('${section.dataset.imageUrl}')`;
+        }, 500);
+        toggleIcon.classList.remove("rotate-45");
+        toggleIcon.classList.add("rotate-0");
+      } else {
+        infoDivs.classList.remove("invisible");
+        infoDivs.setAttribute("aria-hidden", "false");
+        setTimeout(() => {
+          infoDivs.classList.remove("opacity-0", "translate-y-4");
+        }, 50);
+        section.style.backgroundImage = "none";
+        toggleIcon.classList.add("rotate-45");
+        toggleIcon.classList.remove("rotate-0");
+      }
+      isOpen = !isOpen;
+    });
+
+    toggleButton.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleButton.click();
+      }
+    });
+  });
+</script>
+
+<style>
+  .rotate-45 {
+    transform: rotate(45deg);
+  }
+  .rotate-0 {
+    transform: rotate(0deg);
+  }
+  .transition-bg {
+    transition:
+      background-color 0.5s ease-in-out,
+      background-image 0.5s ease-in-out;
+  }
+  .transition-all {
+    transition: all 0.5s ease-in-out;
+  }
+</style>
