@@ -2,25 +2,19 @@
 interface Props {
   title: string;
   info: string;
-  url: string;
-  alt: string;
   coverUrl: string; // URL de la imagen que cubrirá la información
-  optionalClassImage?: string;
 }
 
 const {
   title,
   info,
-  url,
-  alt,
   coverUrl,
-  optionalClassImage = "",
 } = Astro.props;
 import { Image } from "astro:assets";
 ---
 
 <section
-  class="section-container relative bg-cover bg-center rounded-2xl shadow-lg h-96 w-full max-w-sm flex flex-col items-center justify-center transition-bg"
+  class="boxInfo section-container relative bg-cover bg-center rounded-2xl shadow-lg h-96 w-full max-w-sm flex flex-col items-center justify-center transition-bg"
   style={`background-image: url('${coverUrl}');`}
   aria-live="polite"
 >
@@ -53,13 +47,7 @@ import { Image } from "astro:assets";
     <article
       class="bg-transparent py-6 px-4 rounded-lg flex flex-col items-center"
     >
-      <Image
-        src={url}
-        width={64}
-        height={64}
-        alt={alt}
-        class={`text-gray-900 dark:text-white ${optionalClassImage}`}
-      />
+     <slot/>
       <h2
         aria-label={title}
         class="text-xl font-bold mb-2 text-dark dark:text-white"
@@ -110,12 +98,6 @@ import { Image } from "astro:assets";
       isOpen = !isOpen;
     });
 
-    toggleButton.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        toggleButton.click();
-      }
-    });
   });
 </script>
 

@@ -16,7 +16,7 @@ const { backgroundSrc, imageSrc } = Astro.props;
         <!-- Imagen de fondo -->
         <div
             id="background-image"
-            class="absolute left-1/2 top-0 transform -translate-x-1/2 sm:w-[130%] md:w-[130%] lg:w-[130%] xl:w-[130%] h-[100%] bg-cover bg-center bg-no-repeat rounded-[9vw]"
+            class="absolute left-1/2 top-0 transform -translate-x-1/2 sm:w-[130%] md:w-[130%] lg:w-[130%] xl:w-[130%] 2xl:w-[130%] 2xl:h-[130vh] 2xl:-top-36 h-[100%] bg-cover bg-center bg-no-repeat rounded-[9vw]"
             style={`background-image: url('${backgroundSrc}');`}
         >
         </div>
@@ -76,7 +76,7 @@ const { backgroundSrc, imageSrc } = Astro.props;
         scrollTrigger: {
             trigger: "#animated-section",
             start: "top top",
-            end: "+=450vh",
+            end: "+=550vh",
             scrub: 1,
             pin: true,
             pinSpacing: true,
