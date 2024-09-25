@@ -1,0 +1,76 @@
+---
+import "swiper/css";
+import "swiper/css/pagination"; // Importa los estilos de paginación
+
+const ILI = "/LogosAliados/ILI.svg";
+const SEMINARIO = "/LogosAliados/Semwesven.svg";
+const NOW = "/LogosAliados/VenezuelaNow.svg";
+const WESLEY = "/LogosAliados/Wesley.svg";
+import { Image } from "astro:assets";
+
+const Icons = [ILI, SEMINARIO, NOW, WESLEY];
+---
+
+<div class="relative">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {
+        Icons.map((icon, index) => (
+          <div class="swiper-slide">
+            <Image
+              src={icon}
+              width={80}
+              height={80}
+              alt={`Icon ${index}`}
+              class="w-56 h-56"
+            />
+          </div>
+        ))
+      }
+    </div>
+    <!-- Añade el elemento de paginación -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <div class=""></div>
+</div>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Autoplay, Pagination } from "swiper/modules"; // Importa el módulo de Pagination
+
+  new Swiper(".swiper", {
+    modules: [Navigation, Autoplay, Pagination], // Añade Pagination a los módulos
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination", // Especifica el elemento de paginación
+      clickable: true, // Hace que los bullets sean clickeables
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+    mousewheel: true,
+    touchRatio: 0.5,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+  });
+</script>
+
+<style>
+  /* Estilos opcionales para personalizar la paginación */
+  :root {
+    --swiper-pagination-color: #007aff; /* Color de los bullets activos */
+    --swiper-pagination-bullet-size: 8px; /* Tamaño de los bullets */
+    --swiper-pagination-bullet-inactive-color: #999999; /* Color de los bullets inactivos */
+    --swiper-pagination-bullet-inactive-opacity: 0.5; /* Opacidad de los bullets inactivos */
+  }
+</style>
