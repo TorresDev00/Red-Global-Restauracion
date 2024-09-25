@@ -1,5 +1,6 @@
 ---
 import Loader from "./Loader.astro";
+
 interface Props {
     videoSrc: string;
     imageSrc: string;
@@ -8,38 +9,34 @@ interface Props {
 const { videoSrc, imageSrc } = Astro.props;
 ---
 
-<section id="animated-section" class="relative overflow-hidden h-[100vh]">
-    <!-- Loader visible mientras carga -->
-    <div
-        id="loader"
-        class="fixed inset-0 flex items-center justify-center z-30 bg-black"
-    >
-        <Loader />
-    </div>
+<!-- Loader Section -->
+<section id="loader-section" class="flex items-center justify-center bg-black h-[100vh]">
+    <Loader />
+</section>
 
+<!-- Content Section -->
+<section id="content-section" class="relative overflow-hidden h-[100vh] hidden">
     <video
         id="background-video"
-        class="fixed top-0 left-0 w-full h-screen object-cover z-1"
+        class="absolute top-0 left-0 w-full h-full object-cover"
         autoplay
         muted
         loop
-        preload="auto"
+        preload="none"
     >
         <source src={videoSrc} type="video/mp4" />
         Tu navegador no soporta videos.
     </video>
 
     <div
-        class="fixed top-0 left-0 w-full h-screen bg-cover bg-center bg-no-repeat z-10"
-        style={`background-image: url('${imageSrc}');`}
         id="image1"
-    >
-    </div>
+        class="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        style={`background-image: url('${imageSrc}');`}
+    ></div>
 
-    <!-- Botón de audio con ícono -->
     <button
         id="toggle-audio"
-        class="fixed top-4 right-4 bg-gray-600/25 p-2 rounded-full hover:bg-gray-600/35 transition duration-300 z-30"
+        class="absolute top-4 right-4 bg-gray-600/25 p-2 rounded-full hover:bg-gray-600/35 transition duration-300 z-10"
     >
         <span id="audio-icon"></span>
     </button>
@@ -56,47 +53,69 @@ const { videoSrc, imageSrc } = Astro.props;
 
     gsap.registerPlugin(ScrollTrigger);
 
-    function showSection() {
-        const loader = document.getElementById("loader");
-        loader.style.display = "none"; // Ocultar el loader cuando ambos hayan cargado
-    }
-
     function handleMediaLoad() {
-        const video = document.getElementById("background-video");
-        const image = document.getElementById("image1");
+    const video = document.getElementById("background-video");
+    const loaderSection = document.getElementById("loader-section");
+    const contentSection = document.getElementById("content-section");
+    const image = document.getElementById("image1");
 
-        let mediaLoaded = 0;
+    let videoLoaded = false;
+    let imageLoaded = false;
+    let animationInitialized = false;  // Controla si ya se inicializó la animación
 
-        // Verificar si el video está listo
-        video.addEventListener("canplaythrough", () => {
-            mediaLoaded++;
-            if (mediaLoaded === 2) {
-                showSection();
-            }
-        });
-
-        // Verificar si la imagen ha sido cargada
-        const img = new Image();
-        img.src = image.style.backgroundImage
-            .replace('url("', "")
-            .replace('")', "");
-
-        img.onload = () => {
-            mediaLoaded++;
-            if (mediaLoaded === 2) {
-                showSection();
-            }
-        };
+    function checkAllLoaded() {
+        if (videoLoaded && imageLoaded && !animationInitialized) {
+            loaderSection.style.display = 'none';
+            contentSection.classList.remove('hidden');
+            initScrollAnimation();  // Inicializa la animación solo una vez
+            animationInitialized = true;  // Evita que se inicialice dos veces
+        }
     }
 
-    handleMediaLoad();
+    video.addEventListener("canplaythrough", () => {
+        videoLoaded = true;
+        checkAllLoaded();
+    });
 
-    // Funcionalidad para activar/desactivar el audio
+    const img = new Image();
+    img.src = image.style.backgroundImage.replace('url("', '').replace('")', '');
+    img.onload = () => {
+        imageLoaded = true;
+        checkAllLoaded();
+    };
+
+    // Iniciar la carga del video
+    video.load();
+}
+
+function initScrollAnimation() {
+    // Limpiar las instancias de ScrollTrigger previas para evitar conflictos
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+    gsap.fromTo(
+        "#image1",
+        { scale: 25 },
+        {
+            scale: 1,
+            scrollTrigger: {
+                trigger: "#content-section",
+                start: "top top",
+                end: "+=750vh",
+                scrub: 1,
+                pin: true,
+                pinSpacing: true,
+                onEnter: () => console.log('Entered animation area'),
+                onLeave: () => console.log('Left animation area'),
+            },
+        }
+    );
+}
+
+function initAudioToggle() {
     const video = document.getElementById("background-video");
     const toggleButton = document.getElementById("toggle-audio");
     const audioIcon = document.getElementById("audio-icon");
 
-    // Inicializar el ícono
     if (audioIcon) {
         audioIcon.innerHTML = iconVolumenMute;
     }
@@ -107,21 +126,15 @@ const { videoSrc, imageSrc } = Astro.props;
             audioIcon.innerHTML = video.muted ? iconVolumenMute : iconVolumen;
         });
     }
+}
 
-    // Animaciones con ScrollTrigger
-    gsap.fromTo(
-        "#image1",
-        { scale: 25 }, // La imagen comienza con gran zoom
-        {
-            scale: 1, // La imagen vuelve a su tamaño normal
-            scrollTrigger: {
-                trigger: "#animated-section",
-                start: "center center",
-                end: "+=750vh", // Define el desplazamiento adicional necesario para la animación
-                scrub: 1,
-                pin: true,
-                pinSpacing: true, // Permite que ScrollTrigger maneje el espacio
-            },
-        },
-    );
+document.addEventListener('DOMContentLoaded', () => {
+    handleMediaLoad();  // Asegura que el loader y la animación se manejen correctamente
+    initAudioToggle();  // Inicializa el botón de mute
+});
+
+window.addEventListener('resize', () => {
+    ScrollTrigger.refresh();  // Refresca ScrollTrigger en caso de cambios de tamaño de pantalla
+});
+
 </script>
