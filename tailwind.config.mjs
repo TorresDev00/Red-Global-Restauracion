@@ -4,6 +4,10 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
+			fontFamily: {
+				bebas: ['Bebas Neue Bold', 'sans-serif'],
+				levenim: ['Levenim MT', 'sans-serif'],
+			},
 			animation: {
 				scroll: "scroll 25s linear infinite",
 			},

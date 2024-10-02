@@ -1,6 +1,6 @@
 ---
 import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro"
+import Footer from "../components/Footer.astro";
 
 interface Props {
 	title: string;
@@ -24,6 +24,20 @@ const { title } = Astro.props;
 			html {
 				visibility: hidden;
 				opacity: 0;
+			}
+
+			@font-face {
+				font-family: "Bebas Neue Bold";
+				src: url("../../public/fonts/BebasNeue-Bold.woff") format("woff");
+				font-weight: normal;
+				font-style: normal;
+			}
+
+			@font-face {
+				font-family: "Levenim MT";
+				src: url("../../public/fonts/levenim-mt-2.woff") format("woff");
+				font-weight: normal;
+				font-style: normal;
 			}
 		</style>
 
@@ -57,7 +71,7 @@ const { title } = Astro.props;
 			</style>
 		</noscript>
 	</head>
-	<body class="bg-white dark:bg-gray-900">
+	<body class="bg-white dark:bg-black">
 		<Nav />
 		<main>
 			<slot />
