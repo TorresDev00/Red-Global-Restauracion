@@ -1,15 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import AnimatedSection from "../components/AnimatedSection.astro";
-import BoxInfo from "../components/BoxInfo.astro";
-import Carrusel from "../components/Carrusel.astro";
-import Button from "../components/Button.astro";
+import AnimatedSection from "../components/utilities/AnimatedSection.astro";
+import BoxInfo from "../components/ui/BoxInfo.astro";
+import Carrusel from "../components/ui/Carrusel.astro";
+import Button from "../components/ui/Button.astro";
 import { Image } from "astro:assets";
 ---
 
 <Layout title="Red Global Restauración">
 	<section
-		class="bg-[url('/portada.jpg')] bg-cover bg-center bg-no-repeat relative -z-10"
+		class="bg-[url('/portada.jpg')] max-md:bg-[url('/portadaTelefono.jpg')] bg-cover bg-center bg-no-repeat relative -z-10"
 	>
 		<div
 			class="container min-h-[110vh] mx-auto -mt-32 sm:pb-6 lg:pb-10 flex items-center justify-start bg-opacity-35"
@@ -17,15 +17,21 @@ import { Image } from "astro:assets";
 			<div
 				class="max-w-5xl max-sm:mb-20 lg:mb-24 lg:pt-11 mx-auto lg:mx-16 2xl:mx-16 text-start"
 			>
-			<h1 class="text-dark dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-4xl font-extrabold leading-tight">
-				<span class="block font-levenim text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-6xl">
-				  RED GLOBAL
-				</span>
-				<span class="block font-bebas text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-blue-800 dark:text-orange-300">
-				  RESTAURACIÓN
-				</span>
-			  </h1>
-			  
+				<h1
+					class="text-dark dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-4xl font-extrabold leading-tight"
+				>
+					<span
+						class="block font-levenim text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-6xl"
+					>
+						RED GLOBAL
+					</span>
+					<span
+						class="block font-bebas text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-blue-800 dark:text-orange-300"
+					>
+						RESTAURACIÓN
+					</span>
+				</h1>
+
 				<p
 					class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-700 dark:text-gray-300 font-light max-w-3xl"
 				>
@@ -35,7 +41,9 @@ import { Image } from "astro:assets";
 		</div>
 	</section>
 
-	<section class="bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-black dark:to-purple-950">
+	<section
+		class="bg-gradient-to-bl from-purple-50 via-white to-blue-50 dark:from-cyan-950 dark:via-black dark:to-gray-900"
+	>
 		<section
 			class="flex flex-col md:flex-row items-center justify-center mb-6 sm:pt-16 md:pt-20 lg:pt-24 px-4 sm:px-6 lg:px-8"
 		>
@@ -111,7 +119,7 @@ import { Image } from "astro:assets";
 							viewBox="0 0 384 512"
 							fill="currentColor"
 							class="w-20 h-20 fill-black dark:fill-white"
-							><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+							>
 							<path
 								d="M256 128c35.4 0 64-28.7 64-64S291.4 0 256 0s-64 28.7-64 64 28.7 64 64 64zm-30.6 169.8c14.1 16.7 39 19.1 56 5.2l88-72c17.1-14 19.6-39.2 5.6-56.3-14-17.1-39.2-19.6-56.3-5.6l-57.4 47-38.9-46.3c-15.4-18.4-39.2-27.9-64-25.3-24.2 2.5-45.3 16.3-56.4 36.9l-49.4 92c-23.4 43.6-8.7 96.4 34.2 123.8L131.6 432H40c-22.1 0-40 17.9-40 40s17.9 40 40 40h208c34.1 0 53.8-42.8 28.3-68.3L166.4 333.9l34.8-64.9 24.2 28.8z"
 							></path>
@@ -236,13 +244,13 @@ import { Image } from "astro:assets";
 
 	<section class="w-full">
 		<AnimatedSection
-			videoSrc="https://www.apple.com/105/media/us/ipad-pro/2024/97d7edf3-aac0-443d-9731-38d40ff50951/anim/m4-chip/large.mp4"
+			videoSrc="/video.mp4"
 			imageSrc="/logoSectionAnimate.svg"
 		/>
 	</section>
 
 	<div
-		class="bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-black dark:to-purple-950 relative overflow-hidden"
+		class="bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-black dark:to-cyan-900 relative overflow-hidden"
 	>
 		<section class="py-28 px-4">
 			<div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
@@ -255,7 +263,7 @@ import { Image } from "astro:assets";
 						Nuestros Aliados
 					</h2>
 					<div
-						class="mt-4 h-1 w-32 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"
+						class="mt-4 h-1 w-32 bg-gradient-to-r from-teal-600 to-cyan-600 mx-auto rounded-full"
 					>
 					</div>
 					<p
@@ -276,14 +284,20 @@ import { Image } from "astro:assets";
 			</div>
 		</section>
 
-		<section class="pb-11 max-sm:pt-11 max-sm:py-0 relative z-10 dark:bg-gradient-to-b from-transparent via-black/50 to-black">
+		<section
+			class="pb-11 max-sm:pt-11 max-sm:py-0 relative z-10 bg-gradient-to-b from-transparent via-white/50 to-white dark:via-black/50 dark:to-black"
+		>
 			<div
 				class="container mx-auto px-4 sm:px-6 lg:px-14 p-10 md:rounded-3xl"
 			>
 				<div class="text-center font-extrabold pb-10 mb-5">
-					<h3 class="font-bebas text-5xl md:text-5xl lg:text-5xl text-black dark:text-white">Información de contacto</h3>
+					<h3
+						class="font-bebas text-5xl md:text-5xl lg:text-5xl text-black dark:text-white"
+					>
+						Información de contacto
+					</h3>
 					<div
-						class="mt-4 h-1 w-32 bg-gradient-to-r from-blue-600 to-sky-600 mx-auto rounded-full"
+						class="mt-4 h-1 w-32 bg-gradient-to-r from-cyan-600 to-teal-600 mx-auto rounded-full"
 					>
 					</div>
 				</div>
@@ -354,11 +368,11 @@ import { Image } from "astro:assets";
 										>
 											<stop
 												offset="0%"
-												style="stop-color:#0021f7;stop-opacity:1"
+												style="stop-color:#0891b2;stop-opacity:1"
 											></stop>
 											<stop
 												offset="76%"
-												style="stop-color:#0083d4;stop-opacity:1"
+												style="stop-color:#047481;stop-opacity:1"
 											></stop>
 										</linearGradient>
 									</defs>
@@ -397,24 +411,6 @@ import { Image } from "astro:assets";
 									fill="currentColor"
 									viewBox="0 0 16 16"
 								>
-									<defs>
-										<linearGradient
-											id="grad"
-											x1="0%"
-											y1="0%"
-											x2="100%"
-											y2="0%"
-										>
-											<stop
-												offset="0%"
-												style="stop-color:#0021f7;stop-opacity:1"
-											></stop>
-											<stop
-												offset="76%"
-												style="stop-color:#0083d4;stop-opacity:1"
-											></stop>
-										</linearGradient>
-									</defs>
 									<path
 										fill="url(#grad)"
 										d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
@@ -452,22 +448,6 @@ import { Image } from "astro:assets";
 									viewBox="0 0 24 24"
 									fill="currentColor"
 								>
-									<linearGradient
-										id="grad"
-										x1="0%"
-										y1="0%"
-										x2="100%"
-										y2="0%"
-									>
-										<stop
-											offset="0%"
-											style="stop-color:#0021f7;stop-opacity:1"
-										></stop>
-										<stop
-											offset="76%"
-											style="stop-color:#0083d4;stop-opacity:1"
-										></stop>
-									</linearGradient>
 									<path
 										fill="url(#grad)"
 										d="M20 4H6c-1.103 0-2 .897-2 2v5h2V8l6.4 4.8a1.001 1.001 0 0 0 1.2 0L20 8v9h-8v2h8c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-7 6.75L6.666 6h12.668L13 10.75z"
@@ -498,3 +478,4 @@ import { Image } from "astro:assets";
 		</section>
 	</div>
 </Layout>
+

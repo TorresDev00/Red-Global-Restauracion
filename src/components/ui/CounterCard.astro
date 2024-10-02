@@ -1,0 +1,220 @@
+--- 
+export interface Props {
+  dataCount: string;
+  title: string;
+}
+
+const { dataCount, title } = Astro.props;
+---
+
+<div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-8">
+  <div class="counter-card text-center p-6">
+    <div class="icon-container mb-4">
+      <slot />
+    </div>
+    <div class="text-4xl font-bold text-black dark:text-white transition-colors duration-500 gradient-text mb-2" data-count={dataCount}>0</div>
+    <div class="gradient-text-container">
+      <span class="text-2xl font-medium text-black dark:text-white transition-colors duration-500 gradient-text">{title}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes gradientFlowOnce {
+    0% {
+      background-position: 200% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Clase que inicia la animación después de 1 segundo */
+  .gradient-text.animate {
+    background-image: linear-gradient(90deg, #3b82f6, #d75cf6, #ec4899, #3b82f6);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Cambia a transparente para mostrar el gradiente */
+    animation: gradientFlowOnce 2s ease forwards; /* Se anima una sola vez */
+  }
+
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+<script>
+  function animateCounter(element, target, duration) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      element.textContent = Math.floor(start).toLocaleString();
+      if (start >= target) {
+        element.textContent = target.toLocaleString();
+        clearInterval(timer);
+      }
+    }, 16);
+  }
+
+  function setupObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counterElement = entry.target.querySelector('[data-count]');
+          const gradientElements = entry.target.querySelectorAll('.gradient-text');
+          
+          // Anima los contadores
+          animateCounter(counterElement, parseInt(counterElement.getAttribute('data-count')), 2000);
+
+          // Retraso de 1 segundo antes de aplicar la animación de gradiente
+          setTimeout(() => {
+            gradientElements.forEach(el => el.classList.add('animate'));
+          }, 1000);  // Retraso de 1 segundo antes de colorear
+
+          observer.unobserve(entry.target); // Detenemos la observación una vez que se activa
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter-card').forEach(el => observer.observe(el));
+  }
+
+  document.addEventListener('DOMContentLoaded', setupObserver);
+</script>
+
+
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <h3
+      class="my-4 pb-7 text-start max-sm:text-center text-3xl md:text-4xl lg:text-5xl font-extrabold text-black dark:text-white"
+    >
+      Metas Alcanzadas
+    </h3>
+    <div class="flex flex-wrap justify-center -mx-4">
+      <!-- Contador de Personas Alimentadas -->
+      <CounterCard dataCount="654000" title="Personas Alimentadas">
+        <svg
+          class="w-12 h-12 mr-2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient
+              id="gradient1"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stop-color="#3b82f6"></stop>
+              <stop offset="50%" stop-color="#8b5cf6"></stop>
+              <stop offset="100%" stop-color="#ec4899"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            stroke="url(#gradient1)"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+          ></path>
+        </svg>
+      </CounterCard>
+
+      <CounterCard dataCount="10000" title="Líderes Capacitados">
+        <svg
+          class="w-12 h-12 mr-2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient
+              id="gradient2"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stop-color="#3b82f6"></stop>
+              <stop offset="50%" stop-color="#8b5cf6"></stop>
+              <stop offset="100%" stop-color="#ec4899"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            stroke="url(#gradient2)"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+          ></path>
+        </svg>
+      </CounterCard>
+
+      <CounterCard dataCount="50000" title="Miembros Globalmente">
+        <svg
+          class="w-12 h-12 mr-2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient
+              id="gradient3"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stop-color="#3b82f6"></stop>
+              <stop offset="50%" stop-color="#8b5cf6"></stop>
+              <stop offset="100%" stop-color="#ec4899"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            stroke="url(#gradient3)"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+      </CounterCard>
+
+      <CounterCard dataCount="30" title="Años de Trayectoria">
+        <svg
+          class="w-12 h-12 mr-2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient
+              id="gradient4"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stop-color="#3b82f6"></stop>
+              <stop offset="50%" stop-color="#8b5cf6"></stop>
+              <stop offset="100%" stop-color="#ec4899"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            stroke="url(#gradient4)"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+      </CounterCard>
+    </div>
+  </div>
+</section>

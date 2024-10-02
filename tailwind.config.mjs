@@ -5,8 +5,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				bebas: ['Bebas Neue Bold', 'sans-serif'],
-				levenim: ['Levenim MT', 'sans-serif'],
+				bebas: ['Bebas Neue Bold', 'Impact', 'Arial Black', 'sans-serif'],
+				levenim: ['Levenim MT', 'Trebuchet MS', 'Verdana', 'sans-serif'],
 			},
 			animation: {
 				scroll: "scroll 25s linear infinite",

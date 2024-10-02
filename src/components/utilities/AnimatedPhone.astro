@@ -1,0 +1,101 @@
+---
+interface Props {
+    backgroundSrc: string;
+    imageSrc: string;
+}
+
+const { backgroundSrc, imageSrc } = Astro.props;
+---
+
+<section
+    id="animated-section"
+    class="relative overflow-hidden h-[100vh]"
+    style="visibility: hidden;"
+>
+    <div id="phone-container" class="fixed top-0 left-0 w-full h-screen z-10">
+        <!-- Imagen de fondo -->
+        <div
+            id="background-image"
+            class="absolute left-1/2 top-0 transform -translate-x-1/2 sm:w-[130%] md:w-[130%] lg:w-[130%] xl:w-[130%] 2xl:w-[130%] 2xl:h-[130vh] 2xl:-top-36 h-[100%] bg-cover bg-center bg-no-repeat rounded-[9vw]"
+            style={`background-image: url('${backgroundSrc}');`}
+        >
+        </div>
+
+        <!-- Imagen del teléfono -->
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
+            style={`background-image: url('${imageSrc}');`}
+            id="phone-image"
+        >
+        </div>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    function showSection() {
+        const section = document.getElementById("animated-section");
+        section.style.visibility = "visible";
+    }
+
+    function handleMediaLoad() {
+        const phoneImage = document.getElementById("phone-image");
+        const backgroundImage = document.getElementById("background-image");
+
+        let mediaLoaded = 0;
+
+        const bgImg = new Image();
+        bgImg.src = backgroundImage.style.backgroundImage
+            .replace('url("', "")
+            .replace('")', "");
+
+        bgImg.onload = () => {
+            mediaLoaded++;
+            if (mediaLoaded === 2) showSection();
+        };
+
+        const phoneImg = new Image();
+        phoneImg.src = phoneImage.style.backgroundImage
+            .replace('url("', "")
+            .replace('")', "");
+
+        phoneImg.onload = () => {
+            mediaLoaded++;
+            if (mediaLoaded === 2) showSection();
+        };
+    }
+
+    handleMediaLoad();
+
+    // Animación con ScrollTrigger
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#animated-section",
+            start: "top top",
+            end: "+=550vh",
+            scrub: 1,
+            pin: true,
+            pinSpacing: true,
+        },
+    });
+
+    // Animación para la imagen del teléfono
+    tl.fromTo(
+        "#phone-image",
+        { scale: 6, transformOrigin: "center center" }, // Escala inicial más grande
+        { scale: 0.9, duration: 2.2 }, // Escala final normal
+    );
+
+    // Animación para la imagen de fondo
+    // Ajuste para que el fondo solo se reduzca más tarde en la animación para coincidir con el borde del teléfono
+    tl.fromTo(
+        "#background-image",
+        { scale: 1, transformOrigin: "center center" }, // Escala inicial normal (100%)
+        { scale: 0.65, duration: 0.8 }, // Escala final reducida más suave
+        "-=0.7", // El retraso se ha ajustado para que la animación se sincronice mejor
+    );
+</script>
