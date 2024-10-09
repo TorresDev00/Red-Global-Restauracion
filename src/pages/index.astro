@@ -26,7 +26,7 @@ import { Image } from "astro:assets";
 						RED GLOBAL
 					</span>
 					<span
-						class="block font-bebas text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-blue-800 dark:text-orange-300"
+						class="block font-bebas text-7xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl text-blue-800 dark:text-orange-300"
 					>
 						RESTAURACIÓN
 					</span>
@@ -42,12 +42,12 @@ import { Image } from "astro:assets";
 	</section>
 
 	<section
-		class="bg-gradient-to-bl from-purple-50 via-white to-blue-50 dark:from-cyan-950 dark:via-black dark:to-gray-900"
+		class="bg-gradient-to-bl from-purple-50 via-white to-blue-800/15 dark:from-cyan-950 dark:via-black dark:to-gray-900"
 	>
 		<section
 			class="flex flex-col md:flex-row items-center justify-center mb-6 sm:pt-16 md:pt-20 lg:pt-24 px-4 sm:px-6 lg:px-8"
 		>
-			<article class="max-w-md md:max-w-2xl lg:max-w-5xl mx-auto py-10">
+			<article class="max-w-md md:max-w-2xl lg:max-w-5xl mx-auto py-10 max-sm:pt-16 max-sm:py-0">
 				<h2
 					class="font-bebas text-5xl md:text-5xl lg:text-6xl text-center text-dark dark:text-white mb-8"
 				>
@@ -106,7 +106,7 @@ import { Image } from "astro:assets";
 					Nuestros Fundamentos
 				</h2>
 				<div
-					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-items-center"
+					class="flex flex-wrap justify-center gap-8 items-center"
 				>
 					<!-- Fundamento 1 -->
 					<BoxInfo
@@ -250,7 +250,7 @@ import { Image } from "astro:assets";
 	</section>
 
 	<div
-		class="bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-black dark:to-cyan-900 relative overflow-hidden"
+		class="bg-gradient-to-br from-blue-800/15 via-white to-cyan-900/15 dark:from-gray-900 dark:via-black dark:to-cyan-900 relative overflow-hidden"
 	>
 		<section class="py-28 px-4">
 			<div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
@@ -280,7 +280,7 @@ import { Image } from "astro:assets";
 			</div>
 
 			<div class="mt-16 text-center relative z-10">
-				<Button title="Nuestros Aliados" />
+				<Button title="Nuestros Aliados" link="/aliados" />
 			</div>
 		</section>
 

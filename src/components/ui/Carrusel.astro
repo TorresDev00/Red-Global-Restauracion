@@ -17,13 +17,15 @@ const Icons = [ILI, SEMINARIO, NOW, WESLEY];
       {
         Icons.map((icon, index) => (
           <div class="swiper-slide">
-            <Image
-              src={icon}
-              width={80}
-              height={80}
-              alt={`Icon ${index}`}
-              class="w-56 h-56 ml-20"
-            />
+            <div class="flex justify-center items-center ">
+              <Image
+                src={icon}
+                width={80}
+                height={80}
+                alt={`Icon ${index}`}
+                class="w-56 h-56"
+              />
+            </div>
           </div>
         ))
       }
