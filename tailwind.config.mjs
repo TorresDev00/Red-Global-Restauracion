@@ -17,6 +17,9 @@ export default {
 					to: { transform: "translateX(-50%)" },
 				},
 			},
+			screens: {
+				'custom-3xl': '2050px',  // Media query para pantallas de al menos 850px
+			},
 		},
 	},
 	plugins: [
