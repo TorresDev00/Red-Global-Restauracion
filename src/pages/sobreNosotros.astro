@@ -5,7 +5,7 @@ import 'aos/dist/aos.css';
 ---
 
 <Layout title="Sobre nosotros">
-  <section class="pt-28 ">
+  <section class="pt-28 overflow-x-hidden">
       <div class="container mx-auto px-4">
           <div class="flex flex-row max-lg:flex-col">
 
@@ -70,7 +70,7 @@ import 'aos/dist/aos.css';
 
               </div>
 
-              <div class="w-full lg:w-1/2 lg:relative lg:bottom-12 aos-disable" data-aos="fade-left" data-aos-duration="1000">
+              <div class="w-full lg:w-1/2 lg:relative lg:bottom-12" data-aos="fade-left" data-aos-duration="1000">
                 <Image src="/nosotros/Fundamento.webp" alt="Fundamento Biblico" width={600} height={400}
                     class="max-w-full md:max-w-[400px] mx-auto" loading="eager" />
               </div>
@@ -316,23 +316,6 @@ import 'aos/dist/aos.css';
   <script>
       import AOS from 'aos'; // Importa AOS
 
-      function activateAOS() {
-        const elements = document.querySelectorAll('.aos-disable');
-        
-        if (window.innerWidth > 1024) {
-            elements.forEach((el) => {
-                el.classList.remove('aos-disable');
-                el.setAttribute('data-aos', el.getAttribute('data-aos'));
-            });
-            AOS.refresh(); 
-        } else {
-            elements.forEach((el) => {
-                el.classList.add('aos-disable');
-                el.removeAttribute('data-aos'); // Desactiva AOS si la pantalla es menor a 1024px
-            });
-        }
-    }
-
       AOS.init({
           duration: 1000,
           easing: 'ease-in-out',
@@ -340,10 +323,6 @@ import 'aos/dist/aos.css';
           mirror: false, // Evita que la animación se repita al hacer scroll hacia atrás
           anchorPlacement: 'bottom-bottom',
       });
-
-      activateAOS();
-
-      document.addEventListener('resize', activateAOS);
 
   </script>
 
