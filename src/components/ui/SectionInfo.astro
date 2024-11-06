@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+interface Props {
+    title: string;
+    info: string;
+    url: string;
+    position: string;
+}
+
+const { title, info, url, position } = Astro.props;
+const isLeftAling = position === "true"
+---
+{isLeftAling ? (
+<div class="flex justify-center items-center flex-row mt-6 mb-16">
+    <Image
+        src={url}
+        alt="Plantación de Iglesias"
+        width={1000}
+        height={800}
+        class="max-w-full md:max-w-[600px] mx-auto"
+        loading="eager"
+    />
+    <div class="flex flex-col items-center w-6/12">
+        <slot />
+        <div class="mt-3">
+            <h2
+                class="text-4xl font-bold text-black dark:text-white text-center my-5"
+            >
+                {title}
+            </h2>
+            <p class="text-2xl px-10 text-center text-black dark:text-white">
+                {info}
+            </p>
+        </div>
+    </div>
+</div>
+) : (<div class="flex justify-center items-center flex-row my-20">
+    <div class="flex flex-col items-center w-6/12">
+        <slot />
+        <div class="mt-3">
+            <h2
+                class="text-4xl font-bold text-black dark:text-white text-center my-5"
+            >
+                {title}
+            </h2>
+            <p class="text-2xl px-10 text-center text-black dark:text-white">
+                {info}
+            </p>
+        </div>
+    </div>
+    <Image
+        src={url}
+        alt="Plantación de Iglesias"
+        width={1000}
+        height={800}
+        class="max-w-full md:max-w-[600px] mx-auto"
+        loading="eager"
+    />
+</div>
+)}
