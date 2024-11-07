@@ -5,20 +5,22 @@ interface Props {
     info: string;
     url: string;
     position: string;
+    load: string;
 }
 
-const { title, info, url, position } = Astro.props;
+const { title, info, url, position, load} = Astro.props;
 const isLeftAling = position === "true"
+const loadingValue = (load === "eager" || load === "lazy") ? load : "lazy";
 ---
 {isLeftAling ? (
 <div class="flex flex-col md:flex-row justify-center items-center mb-16">
     <Image
         src={url}
-        alt="Plantación de Iglesias"
+        alt={title}
         width={1000}
         height={800}
         class="w-full md:w-6/12 max-w-full mx-auto order-2 md:order-1"
-        loading="eager"
+        loading={loadingValue}
     />
     <div class="flex flex-col items-center w-full md:w-6/12 px-4 my-4 md:px-10 order-1 md:order-2">
         <slot />
@@ -49,11 +51,11 @@ const isLeftAling = position === "true"
     </div>
     <Image
         src={url}
-        alt="Plantación de Iglesias"
+        alt={title}
         width={1000}
         height={800}
         class="max-w-full md:max-w-[600px] mx-auto"
-        loading="lazy"
+        loading={loadingValue}
     />
 </div>
 )}
