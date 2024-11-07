@@ -11,39 +11,38 @@ const { title, info, url, position } = Astro.props;
 const isLeftAling = position === "true"
 ---
 {isLeftAling ? (
-<div class="flex justify-center items-center flex-row mt-6 mb-16">
+<div class="flex flex-col md:flex-row justify-center items-center mb-16">
     <Image
         src={url}
         alt="Plantación de Iglesias"
         width={1000}
         height={800}
-        class="max-w-full md:max-w-[600px] mx-auto"
+        class="w-full md:w-6/12 max-w-full mx-auto order-2 md:order-1"
         loading="eager"
     />
-    <div class="flex flex-col items-center w-6/12">
+    <div class="flex flex-col items-center w-full md:w-6/12 px-4 my-4 md:px-10 order-1 md:order-2">
         <slot />
-        <div class="mt-3">
-            <h2
-                class="text-4xl font-bold text-black dark:text-white text-center my-5"
-            >
+        <div class="my-3">
+            <h2 class="text-4xl font-bold text-black dark:text-white text-center my-5">
                 {title}
             </h2>
-            <p class="text-2xl px-10 text-center text-black dark:text-white">
+            <p class="text-2xl text-justify md:text-center text-black dark:text-white">
                 {info}
             </p>
         </div>
     </div>
 </div>
-) : (<div class="flex justify-center items-center flex-row my-20">
-    <div class="flex flex-col items-center w-6/12">
+) : (
+<div class="flex flex-col md:flex-row justify-center items-center my-16">
+    <div class="flex flex-col items-center w-full md:w-6/12 px-4 my-4 md:px-10">
         <slot />
-        <div class="mt-3">
+        <div class="my-3">
             <h2
                 class="text-4xl font-bold text-black dark:text-white text-center my-5"
             >
                 {title}
             </h2>
-            <p class="text-2xl px-10 text-center text-black dark:text-white">
+            <p class="text-2xl text-justify md:text-center text-black dark:text-white">
                 {info}
             </p>
         </div>
@@ -54,7 +53,7 @@ const isLeftAling = position === "true"
         width={1000}
         height={800}
         class="max-w-full md:max-w-[600px] mx-auto"
-        loading="eager"
+        loading="lazy"
     />
 </div>
 )}

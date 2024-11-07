@@ -5,7 +5,7 @@ import SectionInfo from "../components/ui/SectionInfo.astro";
 ---
 
 <Layout title="Coordinaciones">
-    <section class="py-24 container mx-auto max-w-7xl">
+    <section class="py-10 md:py-24 container mx-auto max-w-7xl">
         <div class="flex justify-start px-4">
             <h1
                 class="text-5xl font-bold flex flex-col text-black dark:text-white"
@@ -16,7 +16,7 @@ import SectionInfo from "../components/ui/SectionInfo.astro";
                 >
             </h1>
         </div>
-        <p class="my-10 px-6 text-3xl text-black dark:text-white">
+        <p class="my-10 px-6 text-3xl text-justify md:text-start text-black dark:text-white">
             En nuestra organización, trabajamos incansablemente para transformar
             vidas y comunidades a través de nuestras siete coordinaciones, cada
             una diseñada para abordar necesidades específicas y fomentar un
@@ -33,24 +33,16 @@ import SectionInfo from "../components/ui/SectionInfo.astro";
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
                 viewBox="0 0 16 16"
                 class="w-16 fill-black dark:fill-white"
+                fill="currentColor"
             >
-                <g>
-                    <path
-                        d="M6.4,16.1c-1,0-2,0-3,0c0-0.2,0-0.4,0-0.5c0-2,0-4,0-5.9c0-0.2,0.1-0.5,0.3-0.7c1.3-1.2,2.6-2.4,4-3.6   c0.2-0.2,0.4-0.2,0.6,0c1.3,1.2,2.7,2.4,4,3.6c0.2,0.2,0.3,0.5,0.3,0.7c0,2,0,4,0,6.1c0,0.3-0.1,0.5-0.4,0.5c-0.7,0-1.5,0-2.2,0   c-0.3,0-0.4-0.1-0.4-0.4c0-0.8,0-1.7,0-2.5c0-1-0.7-1.7-1.6-1.7c-0.9,0-1.5,0.7-1.5,1.7C6.4,14.2,6.4,15.1,6.4,16.1z"
-                    ></path>
-                    <path
-                        d="M14.4,8.4c-0.3,0.3-0.5,0.7-0.8,1C11.7,7.8,9.9,6.2,8,4.6C6.1,6.2,4.2,7.8,2.3,9.5c-0.3-0.3-0.5-0.7-0.8-1   c0.1-0.1,0.1-0.2,0.2-0.3c1.7-1.5,3.4-3,5.1-4.4c0.6-0.5,0.8-1.1,0.6-1.9c-0.3,0-0.6,0-0.9-0.1c0-0.3,0-0.5,0-0.8c0.3,0,0.6,0,1,0   c0-0.3,0-0.6,0.1-1c0.2,0,0.5,0,0.7,0c0,0.3,0,0.6,0.1,1c0.3,0,0.6,0,1,0.1c0,0.2,0,0.5,0,0.8c-0.3,0-0.6,0.1-0.9,0.1   C8.3,2.7,8.4,3.2,9,3.7c1.7,1.4,3.4,2.9,5.1,4.4C14.2,8.2,14.3,8.3,14.4,8.4z"
-                    ></path>
-                    <path
-                        d="M2.9,11c0,1.8,0,3.4,0,5.1c-1,0-1.9,0-2.9,0C0,15,0,14,0,12.9c0-0.1,0.1-0.2,0.2-0.3C1,12.1,1.9,11.6,2.9,11z"
-                    ></path>
-                    <path
-                        d="M13.1,16.1c0-1.7,0-3.4,0-5.1c1,0.6,1.8,1.1,2.7,1.7c0.1,0.1,0.2,0.2,0.2,0.3c0,1,0,2.1,0,3.1C15,16.1,14.1,16.1,13.1,16.1   z"
-                    ></path>
-                </g>
+                <path
+                    d="M6.4 16.1h-3V9.7c0-.2.1-.5.3-.7 1.3-1.2 2.6-2.4 4-3.6.2-.2.4-.2.6 0 1.3 1.2 2.7 2.4 4 3.6.2.2.3.5.3.7v6.1c0 .3-.1.5-.4.5H10c-.3 0-.4-.1-.4-.4v-2.5c0-1-.7-1.7-1.6-1.7s-1.5.7-1.5 1.7c-.1.8-.1 1.7-.1 2.7z"
+                ></path>
+                <path
+                    d="M14.4 8.4c-.3.3-.5.7-.8 1C11.7 7.8 9.9 6.2 8 4.6 6.1 6.2 4.2 7.8 2.3 9.5c-.3-.3-.5-.7-.8-1 2-1.8 3.9-3.7 5.9-5.5V1.9h-.9V1h1V0h.8v1h1v.9h-.9V3l6 5.4zM2.9 11v5.1H0v-3.2c0-.1.1-.2.2-.3.8-.5 1.7-1 2.7-1.6zM13.1 16.1V11c1 .6 1.8 1.1 2.7 1.7.1.1.2.2.2.3v3.1h-2.9z"
+                ></path>
             </svg>
         </SectionInfo>
         <SectionInfo
