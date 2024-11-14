@@ -173,49 +173,55 @@ import logoDark from "../../../public/logo.webp";
   document.getElementById("mobileMenuButton").addEventListener("click", () => {
     const mobileMenu = document.getElementById("mobileMenu");
     mobileMenu.classList.toggle("translate-x-full");
+
+    // Controla el scroll en el cuerpo
+    if (!mobileMenu.classList.contains("translate-x-full")) {
+      document.body.classList.add("overflow-hidden"); // Deshabilita el scroll
+    } else {
+      document.body.classList.remove("overflow-hidden"); // Habilita el scroll
+    }
   });
 
   // Close Mobile Menu
   document.getElementById("mobileMenuClose").addEventListener("click", () => {
     const mobileMenu = document.getElementById("mobileMenu");
     mobileMenu.classList.add("translate-x-full");
+    document.body.classList.remove("overflow-hidden"); // Habilita el scroll
   });
 
   const currentPath = window.location.pathname; // Obtén la URL actual
-    const currentHash = window.location.hash; // Obtén el hash actual si es necesario
+  const currentHash = window.location.hash; // Obtén el hash actual si es necesario
 
-    // Selecciona todos los enlaces del nav
-    const navLinks = document.querySelectorAll('.nav-link');
+  // Selecciona todos los enlaces del nav
+  const navLinks = document.querySelectorAll('.nav-link');
 
-    function updateActiveLinks() {
-      navLinks.forEach(link => {
-        // Remueve las clases activas para garantizar la actualización correcta
-        link.classList.remove('nav-link-active-dark', 'nav-link-active-light', 'nav-link-active');
+  function updateActiveLinks() {
+    navLinks.forEach(link => {
+      // Remueve las clases activas para garantizar la actualización correcta
+      link.classList.remove('nav-link-active-dark', 'nav-link-active-light', 'nav-link-active');
 
-        // Obtén el href de cada enlace
-        const linkPath = link.getAttribute('href');
+      // Obtén el href de cada enlace
+      const linkPath = link.getAttribute('href');
 
-        // Compara la URL actual o el hash con el href del enlace
-        if (currentPath === linkPath || (currentPath === '/' && linkPath === '/') || currentHash === linkPath) {
-          // Añade la clase activa general
-          link.classList.add('nav-link-active');
-          
-          // Añade la clase activa dependiendo del modo oscuro
-          if (document.documentElement.classList.contains('dark')) {
-            link.classList.add('nav-link-active-dark');
-          } else {
-            link.classList.add('nav-link-active-light');
-          }
+      // Compara la URL actual o el hash con el href del enlace
+      if (currentPath === linkPath || (currentPath === '/' && linkPath === '/') || currentHash === linkPath) {
+        // Añade la clase activa general
+        link.classList.add('nav-link-active');
+        
+        // Añade la clase activa dependiendo del modo oscuro
+        if (document.documentElement.classList.contains('dark')) {
+          link.classList.add('nav-link-active-dark');
+        } else {
+          link.classList.add('nav-link-active-light');
         }
-      });
-    }
+      }
+    });
+  }
 
-    // Inicializar los enlaces activos en la carga
-    updateActiveLinks();
+  // Inicializar los enlaces activos en la carga
+  updateActiveLinks();
 
-    // Escuchar cambios en el modo oscuro
-    const observer = new MutationObserver(updateActiveLinks);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-
-
+  // Escuchar cambios en el modo oscuro
+  const observer = new MutationObserver(updateActiveLinks);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 </script>
