@@ -11,6 +11,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.0
         version: 5.1.0(astro@4.15.2(rollup@4.21.2)(typescript@5.5.4))(tailwindcss@3.4.10)
+      '@justinribeiro/lite-youtube':
+        specifier: ^1.6.0
+        version: 1.6.0
       aos:
         specifier: ^2.3.4
         version: 2.3.4
@@ -424,6 +427,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@justinribeiro/lite-youtube@1.6.0':
+    resolution: {integrity: sha512-gq+um2I/Q2rZYhvP9X7NVX36zFE7Lkz8V7ZNU4cPgDuN9a+2dA95PQhF4dCqIag8XspLN9lwrObIW6U0Y5moqA==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2270,6 +2276,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@justinribeiro/lite-youtube@1.6.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

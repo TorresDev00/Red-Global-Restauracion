@@ -25,7 +25,7 @@ const loadingValue = (load === "eager" || load === "lazy") ? load : "lazy";
     <div class="flex flex-col items-center w-full md:w-6/12 px-4 my-4 md:px-10 order-1 md:order-2">
         <slot />
         <div class="my-3">
-            <h2 class="text-4xl font-bold text-black dark:text-white text-center my-5">
+            <h2 class="max-md:text-3xl text-4xl font-bold text-black dark:text-white text-center my-5">
                 {title}
             </h2>
             <p class="text-2xl text-justify md:text-center text-black dark:text-white">
@@ -40,7 +40,7 @@ const loadingValue = (load === "eager" || load === "lazy") ? load : "lazy";
         <slot />
         <div class="my-3">
             <h2
-                class="text-4xl font-bold text-black dark:text-white text-center my-5"
+                class="max-md:text-3xl text-4xl font-bold text-black dark:text-white text-center my-5"
             >
                 {title}
             </h2>
