@@ -4,7 +4,7 @@ const { url , alt } = Astro.props;
 ---
 
 <section
-    class="h-screen hidden md:flex items-center justify-center overflow-hidden my-12"
+    class="h-screen max-md:h-auto md:flex items-center justify-center overflow-hidden my-12 max-md:my-2"
 >
     <Image
         src={url}

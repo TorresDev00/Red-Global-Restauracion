@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AnimatedImage from "../components/ui/AnimatedImage.astro";
+import FlipCard from "../components/ui/FlipCard.astro";
 import { Image } from "astro:assets";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -55,7 +56,7 @@ import "swiper/css/pagination";
       z-index: 0; /* Imagen oculta en el fondo */
     }
   </style>
-  
+
   <section class="pt-20 pb-5 container mx-auto max-w-7xl">
     <div class="px-8">
       <h1
@@ -452,6 +453,7 @@ import "swiper/css/pagination";
           width={700}
           height={700}
           loading="eager"
+          class="max-md:hidden"
         />
       </div>
     </div>
@@ -469,7 +471,7 @@ import "swiper/css/pagination";
       class="container mx-auto max-w-7xl bg-white dark:bg-black rounded-3xl max-md:rounded-none"
     >
       <div
-        class="swiper default-carousel w-full md:h-[700px] rounded-t-3xl max-md:rounded-none"
+        class="swiper default-carousel w-full h-[215px] md:h-[700px] rounded-t-3xl max-md:rounded-none"
       >
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -593,7 +595,7 @@ import "swiper/css/pagination";
           familiar y consejería general para cientos de personas en tres sedes distintas.
         </p>
         <div
-          class="flex justify-center max-md:items-start max-md:ml-2 items-center my-20 gap-10 flex-col md:flex-row"
+          class="flex justify-center max-md:items-start items-center my-20 gap-10 flex-col md:flex-row"
         >
           <!-- Contenedor individual -->
           <div
@@ -609,7 +611,7 @@ import "swiper/css/pagination";
               ></path>
             </svg>
             <h2
-              class="text-black dark:text-white text-2xl md:text-3xl lg:text-5xl font-bold tracking-wide"
+              class="text-black dark:text-white text-3xl md:text-3xl lg:text-5xl font-bold tracking-wide"
             >
               Respeto
             </h2>
@@ -632,7 +634,7 @@ import "swiper/css/pagination";
               ></path>
             </svg>
             <h2
-              class="text-black dark:text-white text-2xl md:text-3xl lg:text-5xl font-bold tracking-wide"
+              class="text-black dark:text-white text-3xl md:text-3xl lg:text-5xl font-bold tracking-wide"
             >
               Responsabilidad
             </h2>
@@ -652,7 +654,7 @@ import "swiper/css/pagination";
               ></path>
             </svg>
             <h2
-              class="text-black dark:text-white text-2xl md:text-3xl lg:text-5xl font-bold tracking-wide"
+              class="text-black dark:text-white text-3xl md:text-3xl lg:text-5xl font-bold tracking-wide"
             >
               Amor
             </h2>
@@ -682,7 +684,9 @@ import "swiper/css/pagination";
 
   <section class="container mx-auto max-w-7xl px-4">
     <div class="flex flex-row justify-center items-start gap-4">
-      <div class="sticky top-4 flex justify-center items-center w-1/2 h-screen max-md:hidden">
+      <div
+        class="sticky top-4 flex justify-center items-center w-1/2 h-screen max-md:hidden"
+      >
         <Image
           width={400}
           height={700}
@@ -710,9 +714,11 @@ import "swiper/css/pagination";
       </div>
 
       <!-- Contenido desplazable -->
-      <div class="flex flex-col w-1/2 max-md:w-full max-md:space-y-0 space-y-32">
+      <div
+        class="flex flex-col w-1/2 max-md:w-full max-md:space-y-0 space-y-32"
+      >
         <div
-          class="flex flex-col justify-center items-start h-screen max-md:h-auto max-md:py-8 space-y-6 px-4"
+          class="flex flex-col justify-center items-start h-screen max-md:h-auto max-md:py-8 max-md:px-0 space-y-6 px-4"
           data-index="0"
         >
           <div class="w-full flex items-start">
@@ -824,38 +830,75 @@ import "swiper/css/pagination";
             videoid="jBOLzQitBhI"
             posterquality="maxresdefault"></lite-youtube>
         </div>
-        <div class="flex flex-col justify-center items-center h-screen max-md:h-auto max-md:py-8 space-y-8 px-6" data-index="1">
+        <div
+          class="flex flex-col justify-center items-center h-screen max-md:h-auto max-md:py-8 max-md:px-0 space-y-8 px-6"
+          data-index="1"
+        >
           <!-- Encabezado -->
           <div class="flex flex-col items-center space-y-4">
             <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100">
-               Visión
+              Visión
             </h2>
             <div class="w-20 h-1 bg-blue-600 rounded"></div>
           </div>
-        
-          <p class="text-2xl font-medium text-gray-700 dark:text-gray-300 leading-relaxed max-md:leading-2 text-center max-md:text-justify max-w-3xl">
+
+          <p
+            class="text-2xl font-medium text-gray-700 dark:text-gray-300 leading-relaxed max-md:leading-2 text-center max-md:text-justify max-w-3xl"
+          >
             Formamos generaciones en la palabra de Dios, para propagar el
             evangelio con un corazón ardiente.
           </p>
-        
+
           <Image
             width={120}
             height={120}
-            src="/Aliados/Eslogan.svg" 
-            alt="Eslogan" 
-            class="max-w-lg w-full h-auto object-contain" 
+            src="/Aliados/Eslogan.svg"
+            alt="Eslogan"
+            class="max-w-lg w-full h-auto object-contain"
             loading="lazy"
-        />
-        
+          />
         </div>
-        
-        <div class="flex justify-center items-center h-screen max-md:h-auto max-md:py-8" data-index="2">
-          <p class="text-lg">Contenido 3</p>
+
+        <div
+          class="flex flex-col items-center justify-center h-screen max-md:h-auto max-md:py-8 gap-8"
+          data-index="2"
+        >
+          <!-- Título -->
+          <div class="flex flex-col items-center space-y-4">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100">
+              Valores
+            </h2>
+            <div class="w-20 h-1 bg-blue-600 rounded"></div>
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-8 items-center">
+            <FlipCard
+              title="Excelencia"
+              info="Educación cristiana para formar una generación relevante y eficaz en la propagación del evangelio."
+            />
+            <FlipCard
+              title="Santidad"
+              info="Un estilo de vida que erradica el pecado, con una integridad para la manifestación de un evangelio genuino."
+            />
+            <FlipCard
+              title="Vida en el Espiritu"
+              info="Apasionados por una intimidad ferviente y una adoración transformadora."
+            />
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <script src="../utils/aliados.js"></script>
+  <section class="bg-gradient-to-r from-[rgb(228,155,2)] to-[rgb(253,197,38)]">
+    <div class="container mx-auto max-w-7xl">
+      <div
+        class="bg h-[250vh] w-full bg-cover bg-center rounded-lg"
+        style="background-image: url('/Aliados/zonaCrecer.webp');"
+      >
+      </div>
+    </div>
+  </section>
 
+  <script src="../utils/aliados.js"></script>
 </Layout>

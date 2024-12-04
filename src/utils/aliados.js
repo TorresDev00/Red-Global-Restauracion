@@ -54,16 +54,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // Comprobar si el ancho de pantalla es mayor a 'md' (768px)
   const mediaQuery = window.matchMedia('(min-width: 768px)');
 
+  // Array de URLs para precargar
+  const imageUrls = [
+    '/Aliados/Semwesven-01.webp',
+    '/Aliados/Semwesven-02.webp',
+    '/Aliados/Semwesven-03.webp'
+  ];
+
+  // Función para precargar imágenes
+  const preloadImages = (urls) => {
+    urls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  };
+
   const handleMediaQuery = (e) => {
     if (e.matches) {
-      // Si el ancho cumple la condición, iniciar IntersectionObserver
+      // Precargar imágenes solo si el ancho cumple la condición
+      preloadImages(imageUrls);
+
+      // Iniciar IntersectionObserver
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const index = entry.target.getAttribute('data-index');
 
-              // Ocultar todas las imágenes y mostrar la correspondiente
+              // Mostrar la imagen correspondiente
               images.forEach((img, i) => {
                 img.classList.toggle('visible', i == index);
                 img.classList.toggle('hidden', i != index);
@@ -81,6 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   mediaQuery.addEventListener('change', handleMediaQuery);
 
+  // Llamar a la función inicialmente
   handleMediaQuery(mediaQuery);
 });
-
