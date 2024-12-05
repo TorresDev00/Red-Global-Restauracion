@@ -102,3 +102,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Llamar a la función inicialmente
   handleMediaQuery(mediaQuery);
 });
+
