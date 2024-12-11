@@ -10,7 +10,7 @@ const { title, info } = Astro.props;
 
 <div class="flip-card">
     <div
-      class="bg-transparent w-[280px] h-[240px] [perspective:260px] group/flipCard bx"
+      class="bg-transparent w-[240px] h-[200px] [perspective:260px] group/flipCard bx"
     >
       <div
         class="relative w-full h-full text-center transition-transform duration-500 [transform-style:preserve-3d] group-hover/flipCard:[transform:rotateY(180deg)]"
@@ -20,7 +20,8 @@ const { title, info } = Astro.props;
         >
           <div
             class="[transform:translateZ(30px)] [filter:drop-shadow(#1c1c1c_0_0_10px)]"
-          >
+          > 
+            <slot></slot>
             <p class="text-xl font-extrabold font-sans">{title}</p>
           </div>
         </div>

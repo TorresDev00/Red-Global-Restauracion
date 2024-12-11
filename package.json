@@ -14,6 +14,7 @@
     "@justinribeiro/lite-youtube": "^1.6.0",
     "aos": "^2.3.4",
     "astro": "^4.15.2",
+    "cobe": "^0.6.3",
     "flowbite": "^2.5.1",
     "gsap": "^3.12.5",
     "sharp": "^0.33.5",

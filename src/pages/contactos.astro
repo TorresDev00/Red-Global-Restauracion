@@ -1,10 +1,89 @@
 ---
+// Importa tu layout
 import Layout from "../layouts/Layout.astro";
 ---
+<Layout title="Contáctanos">
+  <section class="container mx-auto h-screen">
+    <div class="flex flex-row max-md:flex-col justify-center items-center h-full">
+        <div class="flex items-center justify-center">Formulario de contacto</div>
+      <canvas
+        id="cobe"
+        class="w-[500px] h-[500px] max-md:w-[300px] max-md:h-[300px]"
+        style="aspect-ratio: 1"
+      ></canvas>
+    </div>
+  </section>
+  <script>
+    import createGlobe from "cobe";
 
-<Layout title="Contactanos">
-    <h1 class="text-black dark:text-white text-4xl font-bold text-center mt-8">
-        Red Global Restauración 🚀
-    </h1>
-    <p class="text-black dark:text-white text-center">Este es el Contactanos 📞</p>
+    let phi = 0;
+    let isDragging = false;
+    let lastMouseX = 0;
+    let velocity = 0.005; // Inicia con un valor para rotación automática
+
+    const initGlobe = () => {
+      const canvas = document.getElementById("cobe") as HTMLCanvasElement;;
+
+      if (!canvas) {
+        console.error("No se encontró el elemento canvas");
+        return;
+        }
+    
+        const isMobile = window.innerWidth < 768;
+
+      const globe = createGlobe(canvas, {
+        devicePixelRatio: window.devicePixelRatio || 1,
+        width: canvas.offsetWidth * window.devicePixelRatio, // Ajustar dinámicamente
+        height: canvas.offsetHeight * window.devicePixelRatio, // Ajustar dinámicamente
+        phi: 0,
+        theta: 0,
+        dark: 0,
+        diffuse: 1.2,
+        scale: 1, // Escala más pequeña para que se ajuste bien
+        mapSamples: isMobile ? 8000 : 16000,
+        mapBrightness: 6,
+        baseColor: [1, 1, 1],
+        markerColor: [0, 0, 1],
+        glowColor: [1, 1, 1],
+        offset: [0, 0],
+        markers: [
+        { location: [8.48801, -66.87919], size: 0.1 }, // Caracas, Venezuela
+        ],
+        onRender: (state) => {
+          state.phi = phi;
+          phi += velocity; // Incrementa usando la velocidad
+          velocity *= isDragging ? 0.98 : 1; // Aplica inercia solo si está interactuando
+        },
+      });
+
+      // Manejo del mouse para interacción
+      canvas.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        lastMouseX = e.clientX;
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDragging = false;
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (isDragging) {
+          const deltaX = e.clientX - lastMouseX;
+          velocity = deltaX * 0.001; // Ajusta la sensibilidad
+          lastMouseX = e.clientX;
+        }
+      });
+    };
+
+    // Solo inicia si el canvas está visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          initGlobe();
+        }
+      });
+    });
+
+    observer.observe(document.getElementById("cobe"));
+  </script>
 </Layout>
