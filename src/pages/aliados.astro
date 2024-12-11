@@ -5,6 +5,7 @@ import FlipCard from "../components/ui/FlipCard.astro";
 import { Image } from "astro:assets";
 import "swiper/css";
 import "swiper/css/pagination";
+import 'aos/dist/aos.css';
 ---
 
 <Layout title="Aliados">
@@ -70,7 +71,8 @@ import "swiper/css/pagination";
   <section class="container mx-auto max-w-7xl px-4">
     <div class="flex flex-col md:flex-row md:mx-8 gap-8">
       <div class="flex-1 space-y-4">
-        <svg
+        <a href="https://venezuelanow.org" target="_blank">
+          <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           class="w-56 h-40"
@@ -398,6 +400,8 @@ import "swiper/css/pagination";
             </g>
           </g>
         </svg>
+        </a>
+
 
         <p
           class="text-xl md:text-2xl lg:text-3xl text-black dark:text-white tracking-wider max-md:tracking-wide pb-12"
@@ -736,7 +740,8 @@ import "swiper/css/pagination";
           data-index="0"
         >
           <div class="w-full flex items-start">
-            <svg
+            <a href="https://semwesven.com" target="_blank">
+             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="200"
               height="70"
@@ -853,7 +858,8 @@ import "swiper/css/pagination";
                 style="stroke:none;fill-rule:nonzero;fill-opacity:1"
                 d="M229.586 355.297c11.355 1.894 20.871 6.465 28.004 15.734 2.351 3.524 4.558 7.41 5.61 11.547-.212.629-.419 1.258-.634 1.902-.3-.445-.601-.886-.91-1.347-5.246-7.531-11.773-13.63-21.062-15.59-3.656-.469-7.332-.629-11.008-.824v-11.422zm0 0"
               ></path>
-            </svg>
+             </svg>
+            </a>
           </div>
           <p class="text-2xl text-black dark:text-white tracking-wider max-md:tracking-tight">
             El Seminario Wesleyano de Venezuela es una institución que forma
@@ -1005,18 +1011,21 @@ import "swiper/css/pagination";
           class="flex flex-col gap-y-[35rem] justify-center items-center mb-10 h-[235vh] max-md:hidden"
         >
           <p
+            data-aos="fade-up" 
             class="md:text-3xl lg:text-5xl text-white font-levenim text-justify leading-relaxed mb-2"
           >
             Zonas Crecer es un programa que busca mejorar el potencial académico
             en niños, niñas y adolescentes.
           </p>
           <p
+            data-aos="fade-up"
             class="md:text-3xl lg:text-5xl text-white font-levenim text-justify leading-relaxed mb-2"
           >
             A través de refuerzo en contenido curriculares enfocado en
             principios bíblicos y valores éticos,
           </p>
           <p
+            data-aos="fade-up"
             class="md:text-3xl lg:text-5xl text-white font-levenim text-justify leading-relaxed"
           >
             garantizando un aprendizaje productivo.

@@ -3,6 +3,16 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Swiper } from "swiper";
 import { Pagination, Mousewheel, Autoplay } from "swiper/modules";
+import AOS from 'aos'; // Importa AOS
+
+AOS.init({
+    duration: 1000,
+    offset: 1000, // Ajusta según lo necesites
+    easing: 'ease-in-out', // Suavizado
+    once: false, // Anima solo una vez
+    mirror: true, 
+    anchorPlacement: 'bottom-bottom',
+});
 
 gsap.registerPlugin(ScrollTrigger);
 
