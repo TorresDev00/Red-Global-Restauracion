@@ -2,97 +2,112 @@
 // Importa tu layout
 import Layout from "../layouts/Layout.astro";
 ---
+
 <Layout title="Contáctanos">
   <section class="container mx-auto h-screen">
-    <div class="flex flex-row max-md:flex-col justify-center items-center h-full gap-8">
-      <div class="relative w-full max-w-md p-6 bg-white dark:bg-black shadow-xl rounded-lg"> 
-  <h2 class="text-3xl text-center font-bebas text-gray-700 dark:text-gray-200 mb-6">Contáctanos</h2>
-  <form class="space-y-7">
-    <!-- Campo Nombre -->
-    <div class="relative w-full">
-      <input 
-        type="text" 
-        id="nombre" 
-        name="nombre" 
-        placeholder=""
-        class="peer w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full p-2 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-        required>
-      <label 
-        for="nombre" 
-        class="absolute left-4 top-2.5 text-gray-400 dark:text-gray-500 text-sm transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 peer-focus:top-[-1.2rem] peer-focus:left-4 peer-focus:text-blue-500 peer-focus:text-xs peer-not-placeholder-shown:top-[-1.2rem] peer-not-placeholder-shown:left-4 peer-not-placeholder-shown:text-blue-500 peer-not-placeholder-shown:text-xs">
-        Nombre
-      </label>
-    </div>
-  
-    <!-- Campo Apellido -->
-    <div class="relative w-full">
-      <input 
-        type="text" 
-        id="apellido" 
-        name="apellido" 
-        placeholder=""
-        class="peer w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full p-2 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-        required>
-      <label 
-        for="apellido" 
-        class="absolute left-4 top-2.5 text-gray-400 dark:text-gray-500 text-sm transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 peer-focus:top-[-1.2rem] peer-focus:left-4 peer-focus:text-blue-500 peer-focus:text-xs peer-not-placeholder-shown:top-[-1.2rem] peer-not-placeholder-shown:left-4 peer-not-placeholder-shown:text-blue-500 peer-not-placeholder-shown:text-xs">
-        Apellido
-      </label>
-    </div>
-  
-    <!-- Campo Correo -->
-    <div class="relative w-full">
-      <input 
-        type="email" 
-        id="correo" 
-        name="correo" 
-        placeholder=""
-        class="peer w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full p-2 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-        required>
-      <label 
-        for="correo" 
-        class="absolute left-4 top-2.5 text-gray-400 dark:text-gray-500 text-sm transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 peer-focus:top-[-1.2rem] peer-focus:left-4 peer-focus:text-blue-500 peer-focus:text-xs peer-not-placeholder-shown:top-[-1.2rem] peer-not-placeholder-shown:left-4 peer-not-placeholder-shown:text-blue-500 peer-not-placeholder-shown:text-xs">
-        Correo
-      </label>
-    </div>
-  
-    <!-- Campo Mensaje -->
-    <div class="relative w-full">
-      <textarea 
-        id="mensaje" 
-        name="mensaje" 
-        rows="4"
-        placeholder=""
-        class="peer w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-xl p-2 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-        required></textarea>
-      <label 
-        for="mensaje" 
-        class="absolute left-4 top-2.5 text-gray-400 dark:text-gray-500 text-sm transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 peer-focus:top-[-1.2rem] peer-focus:left-4 peer-focus:text-blue-500 peer-focus:text-xs peer-not-placeholder-shown:top-[-1.2rem] peer-not-placeholder-shown:left-4 peer-not-placeholder-shown:text-blue-500 peer-not-placeholder-shown:text-xs">
-        Escribe tu mensaje
-      </label>
-    </div>
-  
-    <!-- Botón de envío -->
-    <button 
-      type="submit"
-      class="w-full bg-blue-900 text-white font-medium py-2 rounded-lg hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-400 dark:bg-blue-800 dark:hover:bg-blue-600">
-      Enviar
-    </button>
-  </form>
-</div>
+    <div
+      class="flex flex-row max-md:flex-col justify-center items-center h-full gap-8"
+    >
+      <div
+        class="relative w-full max-w-md p-6 bg-white dark:bg-black shadow-xl rounded-lg"
+      >
+        <h2
+          class="text-3xl text-center font-bebas text-gray-700 dark:text-gray-200 mb-6"
+        >
+          Contáctanos
+        </h2>
+        <form class="space-y-7"> 
+          <!-- Campo Nombre -->
+          <div class="relative w-full">
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder=" "
+              class="peer w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full p-2 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+              required
+            />
+            <label
+              for="nombre"
+              class="absolute left-4 top-[-1.2rem] text-gray-400 dark:text-gray-500 text-sm transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:left-4 peer-focus:top-[-1.2rem] peer-focus:text-blue-500 peer-focus:text-xs peer-not-placeholder-shown:top-[-1.2rem] peer-not-placeholder-shown:text-blue-500 peer-not-placeholder-shown:text-xs"
+            >
+              Nombre
+            </label>
+          </div>
 
-      
-    
+          <!-- Campo Apellido -->
+          <div class="relative w-full">
+            <input
+              type="text"
+              id="apellido"
+              name="apellido"
+              placeholder=" "
+              class="peer w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full p-2 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+              required
+            />
+            <label
+              for="apellido"
+              class="absolute left-4 top-[-1.2rem] text-gray-400 dark:text-gray-500 text-sm transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:left-4 peer-focus:top-[-1.2rem] peer-focus:text-blue-500 peer-focus:text-xs peer-not-placeholder-shown:top-[-1.2rem] peer-not-placeholder-shown:text-blue-500 peer-not-placeholder-shown:text-xs"
+            >
+              Apellido
+            </label>
+          </div>
+
+          <!-- Campo Correo -->
+          <div class="relative w-full">
+            <input
+              type="email"
+              id="correo"
+              name="correo"
+              placeholder=" "
+              class="peer w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full p-2 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+              required
+            />
+            <label
+              for="correo"
+              class="absolute left-4 top-[-1.2rem] text-gray-400 dark:text-gray-500 text-sm transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:left-4 peer-focus:top-[-1.2rem] peer-focus:text-blue-500 peer-focus:text-xs peer-not-placeholder-shown:top-[-1.2rem] peer-not-placeholder-shown:text-blue-500 peer-not-placeholder-shown:text-xs"
+            >
+              Correo
+            </label>
+          </div>
+
+          <!-- Campo Mensaje -->
+          <div class="relative w-full">
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="4"
+              placeholder=" "
+              class="peer w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-xl p-2 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+              required></textarea>
+            <label
+              for="mensaje"
+              class="absolute left-4 top-[-1.2rem] text-gray-400 dark:text-gray-500 text-sm transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:left-4 peer-focus:top-[-1.2rem] peer-focus:text-blue-500 peer-focus:text-xs peer-not-placeholder-shown:top-[-1.2rem] peer-not-placeholder-shown:text-blue-500 peer-not-placeholder-shown:text-xs"
+            >
+              Escribe tu mensaje
+            </label>
+          </div>
+
+          <!-- Botón de envío -->
+          <button
+            type="submit"
+            class="w-full bg-blue-900 text-white font-medium py-2 rounded-lg hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-400 dark:bg-blue-800 dark:hover:bg-blue-600"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
+
       <!-- Canvas -->
       <canvas
         id="cobe"
         class="w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] max-md:hidden"
-        style="aspect-ratio: 1;">
+        style="aspect-ratio: 1;"
+      >
       </canvas>
     </div>
-    
   </section>
-  
+
   <script>
     import createGlobe from "cobe";
 
@@ -102,14 +117,14 @@ import Layout from "../layouts/Layout.astro";
     let velocity = 0.005; // Inicia con un valor para rotación automática
 
     const initGlobe = () => {
-      const canvas = document.getElementById("cobe") as HTMLCanvasElement;;
+      const canvas = document.getElementById("cobe") as HTMLCanvasElement;
 
       if (!canvas) {
         console.error("No se encontró el elemento canvas");
         return;
-        }
-    
-        const isMobile = window.innerWidth < 768;
+      }
+
+      const isMobile = window.innerWidth < 768;
 
       const globe = createGlobe(canvas, {
         devicePixelRatio: window.devicePixelRatio || 1,
@@ -127,7 +142,7 @@ import Layout from "../layouts/Layout.astro";
         glowColor: [1, 1, 1],
         offset: [0, 0],
         markers: [
-        { location: [8.48801, -66.87919], size: 0.1 }, // Caracas, Venezuela
+          { location: [8.48801, -66.87919], size: 0.1 }, // Caracas, Venezuela
         ],
         onRender: (state) => {
           state.phi = phi;
