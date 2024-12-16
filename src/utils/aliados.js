@@ -2,8 +2,11 @@ import "@justinribeiro/lite-youtube";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Swiper } from "swiper";
-import { Pagination, Mousewheel, Autoplay } from "swiper/modules";
+import { Pagination, Mousewheel, Autoplay, EffectCoverflow } from "swiper/modules";
 import AOS from 'aos'; // Importa AOS
+import 'flowbite';
+import { initFlowbite } from "flowbite";
+
 
 AOS.init({
     duration: 1000,
@@ -13,6 +16,8 @@ AOS.init({
     mirror: true, 
     anchorPlacement: 'bottom-bottom',
 });
+
+initFlowbite();
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -111,4 +116,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Llamar a la función inicialmente
   handleMediaQuery(mediaQuery);
+
+  const swiper = new Swiper('.mySwiper', {
+    modules: [Pagination, EffectCoverflow, Mousewheel],
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 200,
+        modifier: 1,
+        slideShadows: true,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+    grabCursor: true,
+    mousewheel: {
+      forceToAxis: true, // Restringe al eje principal
+      sensitivity: 0.5, // Reduce la sensibilidad del desplazamiento
+      thresholdDelta: 20, // Ignora pequeños desplazamientos
+    },
+    touchRatio: 0.5,
+});
+  
 });

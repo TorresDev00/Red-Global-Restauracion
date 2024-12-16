@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import 'aos/dist/aos.css'
 interface Props {
     title: string;
     info: string;
@@ -13,7 +14,7 @@ const isLeftAling = position === "true"
 const loadingValue = (load === "eager" || load === "lazy") ? load : "lazy";
 ---
 {isLeftAling ? (
-<div class="flex flex-col md:flex-row justify-center items-center mb-16">
+<div class="flex flex-col md:flex-row justify-center items-center mb-16" data-aos="fade-left">
     <Image
         src={url}
         alt={title}
@@ -35,7 +36,7 @@ const loadingValue = (load === "eager" || load === "lazy") ? load : "lazy";
     </div>
 </div>
 ) : (
-<div class="flex flex-col md:flex-row justify-center items-center my-16">
+<div class="flex flex-col md:flex-row justify-center items-center my-16" data-aos="fade-right">
     <div class="flex flex-col items-center w-full md:w-6/12 px-4 my-4 md:px-10">
         <slot />
         <div class="my-3">
@@ -59,3 +60,17 @@ const loadingValue = (load === "eager" || load === "lazy") ? load : "lazy";
     />
 </div>
 )}
+
+<script>
+    import AOS from 'aos'; // Importa AOS
+
+    AOS.init({
+        duration: 1000,
+        offset: 100,
+        easing: 'ease-in-out',
+        once: true, // Esto asegura que la animación solo ocurra una vez
+        mirror: false, // Evita que la animación se repita al hacer scroll hacia atrás
+        anchorPlacement: 'bottom-bottom',
+    });
+
+</script>
