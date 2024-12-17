@@ -7,12 +7,12 @@ import AOS from 'aos'; // Importa AOS
 import 'flowbite';
 import { initFlowbite } from "flowbite";
 
-
+const isMobile = window.innerWidth < 768;
 AOS.init({
     duration: 1000,
-    offset: 1000, // Ajusta según lo necesites
+    offset: isMobile ? 0 : 1000, // Ajusta según lo necesites
     easing: 'ease-in-out', // Suavizado
-    once: false, // Anima solo una vez
+    once: true, // Anima solo una vez
     mirror: true, 
     anchorPlacement: 'bottom-bottom',
 });
@@ -146,5 +146,47 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     touchRatio: 0.5,
 });
+
+new Swiper(".swiper-aliados", {
+  modules: [Pagination, Mousewheel, Autoplay],
+  loop: true,
+  slidesPerView: 3, // Muestra 3 diapositivas al mismo tiempo
+  spaceBetween: 20, // Espacio entre diapositivas (opcional)
+  keyboard: {
+    enabled: true,
+    onlyInViewport: true,
+  },
+  grabCursor: true,
+  mousewheel: {
+    forceToAxis: true,
+    sensitivity: 0.5,
+    thresholdDelta: 20,
+  },
+  touchRatio: 0.5,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  autoplay: {
+    delay: 7000,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 30,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 30,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+  }
+});
+
+  
   
 });
