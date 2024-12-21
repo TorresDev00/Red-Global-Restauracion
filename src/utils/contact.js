@@ -35,35 +35,48 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
             
-            const response = await fetch("/api/contacto", {
-                method: "POST",
-                headers: {
+            try {
+                // Enviar datos directamente a Formspree
+                const formspreeEndpoint = "https://formspree.io/f/mzzzpkpn";
+                const response = await fetch(formspreeEndpoint, {
+                  method: "POST",
+                  headers: {
                     "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
+                  },
+                  body: JSON.stringify({
                     nombre: nombre.value,
                     apellido: apellido.value,
                     correo: correo.value,
                     mensaje: mensaje.value,
-                }),
-            });            
-            
-            if(response.ok && !successAlertShown){
-                Swal.fire({
+                  }),
+                });
+        
+                if (response.ok) {
+                  Swal.fire({
                     title: "Enviado con Éxito",
-                    text: "Presiona click en el botón!",
+                    text: "¡Gracias por contactarnos!",
                     icon: "success",
                     showConfirmButton: true,
                     confirmButtonText: "OK",
-                });
-                document.querySelector("form").reset();
-            }else{
-                Swal.fire({
+                  });
+                  document.querySelector("form").reset();
+                } else {
+                  Swal.fire({
                     title: "Error al enviar el correo",
                     text: "Ocurrió un error al enviar el correo. Por favor, inténtalo de nuevo más tarde.",
                     icon: "error",
                     showConfirmButton: true,
                     confirmButtonText: "OK",
+                  });
+                }
+              } catch (error) {
+                console.error("Error al enviar el correo:", error);
+                Swal.fire({
+                  title: "Error al enviar el correo",
+                  text: "Ocurrió un error al enviar el correo. Por favor, inténtalo de nuevo más tarde.",
+                  icon: "error",
+                  showConfirmButton: true,
+                  confirmButtonText: "OK",
                 });
             }
             

@@ -55,40 +55,40 @@ const { title, uniqueId } = Astro.props;
   </style>
 
 <script>
-  import { Drawer } from 'flowbite';
+  // import { Drawer } from 'flowbite';
   
-  document.addEventListener('astro:page-load', () => {
-    const drawerElements = document.querySelectorAll('[id^=""]');
+  // document.addEventListener('astro:page-load', () => {
+  //   const drawerElements = document.querySelectorAll('[id^=""]');
     
-    drawerElements.forEach($targetEl => {
-      const options = {
-        placement: 'bottom',
-        backdrop: true,
-        bodyScrolling: false,
-        edge: false,
-        edgeOffset: '',
-        backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30'
-      };
+  //   drawerElements.forEach($targetEl => {
+  //     const options = {
+  //       placement: 'bottom',
+  //       backdrop: true,
+  //       bodyScrolling: false,
+  //       edge: false,
+  //       edgeOffset: '',
+  //       backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30'
+  //     };
 
-      if ($targetEl) {
-        const drawer = new Drawer($targetEl, options);
+  //     if ($targetEl) {
+  //       const drawer = new Drawer($targetEl, options);
         
-        $targetEl.addEventListener('show.drawer', () => {
-          $targetEl.style.transform = 'translateY(0)';
-          $targetEl.classList.add('drawer-enter');
-        });
+  //       $targetEl.addEventListener('show.drawer', () => {
+  //         $targetEl.style.transform = 'translateY(0)';
+  //         $targetEl.classList.add('drawer-enter');
+  //       });
 
-        $targetEl.addEventListener('hide.drawer', () => {
-          $targetEl.style.transform = 'translateY(100%)';
-          $targetEl.classList.remove('drawer-enter');
-        });
+  //       $targetEl.addEventListener('hide.drawer', () => {
+  //         $targetEl.style.transform = 'translateY(100%)';
+  //         $targetEl.classList.remove('drawer-enter');
+  //       });
 
-        $targetEl.addEventListener('hidden.drawer', () => {
-          $targetEl.style.transform = '';
-        });
-      }
-    });
-  });
+  //       $targetEl.addEventListener('hidden.drawer', () => {
+  //         $targetEl.style.transform = '';
+  //       });
+  //     }
+  //   });
+  // });
 </script>
 
 
